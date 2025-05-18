@@ -1,4 +1,4 @@
-# db_service.py - Database operations
+# db_service.py - Focused database operations
 import os
 import pyodbc
 import pandas as pd
@@ -13,10 +13,11 @@ logger = logging.getLogger("gemini-db-assistant")
 
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10))
 def execute_sql_query(query):
-    """Execute SQL query against the database with retry logic"""
+    """Execute SQL query against the database with retry logic and better error handling"""
     try:
         # Direct connection using pyodbc
-        conn = pyodbc.connect(DB_CONNECTION_STRING)
+        connection_string = DB_CONNECTION_STRING.replace('\\\\', '\\')
+        conn = pyodbc.connect(connection_string)
         cursor = conn.cursor()
         cursor.execute(query)
         
@@ -47,28 +48,19 @@ def execute_sql_query(query):
         
         return result, None
     except Exception as e:
-        logger.error(f"Database error: {str(e)}")
-        return None, f"Database error: {str(e)}"
-
-def get_table_schema():
-    """Get schema information from the database"""
-    try:
-        conn = pyodbc.connect(DB_CONNECTION_STRING)
-        cursor = conn.cursor()
+        error_message = str(e)
+        logger.error(f"Database error: {error_message}")
         
-        # Get all tables
-        tables_query = """
-        SELECT TABLE_NAME
-        FROM INFORMATION_SCHEMA.TABLES
-        WHERE TABLE_TYPE = 'BASE TABLE'
-        ORDER BY TABLE_NAME
-        """
-        
-        cursor.execute(tables_query)
-        tables = [row[0] for row in cursor.fetchall()]
-        
-        conn.close()
-        return tables
-    except Exception as e:
-        logger.error(f"Error getting schema: {str(e)}")
-        return []
+        # More specific error messages for common issues
+        if "Login failed" in error_message:
+            return None, "Database authentication failed. Please check credentials."
+        elif "timeout" in error_message.lower():
+            return None, "Database connection timed out. The server may be unavailable."
+        elif "not found" in error_message.lower():
+            return None, "Database or server not found. Please check configuration."
+        elif "syntax error" in error_message.lower():
+            return None, f"SQL syntax error in query: {error_message}"
+        elif "permission" in error_message.lower():
+            return None, "Insufficient permissions to execute the query."
+        else:
+            return None, f"Database error: {error_message}"
