@@ -1,0 +1,3 @@
+@echo off
+echo Starting frontend...
+npm start

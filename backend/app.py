@@ -1,4 +1,4 @@
-# app.py - Main FastAPI application with routes
+# app.py - Streamlined FastAPI application with routes
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -16,15 +16,15 @@ load_dotenv()
 # Import our services
 from ai_service import create_chat_session, process_message
 from db_service import execute_sql_query
-from file_service import load_model_files, get_supported_file_types
+from file_service import load_context_files, get_supported_file_types, get_context_structure
 
-# Configure logging
+# Configure logging - SIMPLIFIED
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler("api_debug.log")
+        logging.FileHandler("api.log")
     ]
 )
 logger = logging.getLogger("gemini-db-assistant")
@@ -55,8 +55,26 @@ class DirectSQLRequest(BaseModel):
     query: str
     session_id: Optional[str] = None
 
+
+def check_database_connection():
+    """Test database connection and log the result"""
+    try:
+        # Try a simple query that should work with any SQL Server
+        result, error = execute_sql_query("SELECT 1 AS ConnectionTest")
+        
+        if error:
+            logger.error(f"⚠️ Database connection test failed with error: {error}")
+            return False
+        else:
+            logger.info(f"✅ Database connection successful: {result}")
+            return True
+    except Exception as e:
+        logger.error(f"⚠️ Database connection test failed with exception: {str(e)}")
+        return False
+
+        
 # Create FastAPI app
-app = FastAPI(title="Gemini Database Assistant API", 
+app = FastAPI(title="SQL Database Assistant API", 
               description="AI-powered database assistant using Gemini to help users query and understand database schema and data")
 
 # Add CORS middleware
@@ -74,34 +92,39 @@ file_context = None
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
-    """Middleware to log request information"""
+    """Simplified middleware to log only essential request information"""
     start_time = time.time()
     response = await call_next(request)
     process_time = time.time() - start_time
     
-    logger.info(
-        f"Request: {request.method} {request.url.path} "
-        f"Status: {response.status_code} "
-        f"Process time: {process_time:.4f}s"
-    )
+    # Only log non-static requests and skip favicon
+    path = request.url.path
+    if not path.startswith("/static") and not path.endswith("favicon.ico"):
+        logger.info(f"{request.method} {path} - Status: {response.status_code} - {process_time:.2f}s")
     
     return response
 
 @app.on_event("startup")
 async def startup_event():
-    """Load model files on startup"""
+    """Load context files on startup and check database connection"""
     global file_context
-    file_context, file_count, tables, file_names = load_model_files()
-    logger.info(f"API started. Loaded {file_count} files and discovered {len(tables)} database tables.")
+    file_context, file_count, _ = load_context_files()
+    logger.info(f"Server started - Loaded {file_count} context files")
+    
+    # Check database connection but don't prevent startup if it fails
+    db_connected = check_database_connection()
+    if not db_connected:
+        logger.warning("Application started without database connection. SQL queries will fail.")
+    else:
+        logger.info("Application started with working database connection.")
 
 @app.get("/")
 async def root():
-    """Root endpoint to check if API is running"""
-    global file_context
-    file_info = load_model_files()
+    """Root endpoint with minimal info"""
+    file_info = load_context_files()
     return {
-        "status": "Gemini Database Assistant API is running", 
-        "loaded_files": file_info[1],  # Access by index instead of unpacking
+        "status": "SQL Database Assistant API is running", 
+        "loaded_files": file_info[1],
         "supported_file_types": get_supported_file_types()
     }
 
@@ -115,29 +138,33 @@ async def get_frontend_config():
 
 @app.get("/schema")
 async def get_schema():
-    """Get information about loaded schema files"""
-    context, file_count, tables, file_names = load_model_files()
+    """Get information about loaded context files only - no database schema"""
+    context_structure = get_context_structure()
+    
+    # Create empty tables array for frontend compatibility
+    empty_tables = []
+    
     return {
-        "loaded_files": file_count,
-        "tables": tables,
-        "file_types": get_supported_file_types()
+        "tables": empty_tables,
+        "file_types": get_supported_file_types(),
+        "context_structure": context_structure
     }
 
 @app.get("/context")
 async def get_context():
     """Get information about loaded context files"""
-    context, file_count, tables, file_names = load_model_files()
+    _, file_count, file_paths = load_context_files()
     return {
         "loaded_files": file_count,
-        "folder": "model_files",
-        "file_names": file_names
+        "folder": "context",
+        "file_paths": file_paths
     }
     
 @app.post("/chat", response_model=ChatResponse)
 async def chat(chat_request: ChatMessage):
     """Process a chat message and return the response"""
-    request_id = str(uuid.uuid4())
-    logger.info(f"Request {request_id}: Processing chat message: {chat_request.message[:30]}...")
+    request_id = str(uuid.uuid4())[:8]  # Use shorter ID for cleaner logs
+    logger.info(f"Chat [{request_id}]: '{chat_request.message[:30]}...'")
     
     session_id = chat_request.session_id
     
@@ -145,7 +172,7 @@ async def chat(chat_request: ChatMessage):
     if not session_id or session_id not in chat_sessions:
         session_id = str(uuid.uuid4())
         chat_sessions[session_id] = create_chat_session(file_context)
-        logger.info(f"Created new chat session: {session_id}")
+        logger.info(f"New chat session: {session_id[:8]}")
     
     # Get the chat session
     chat = chat_sessions[session_id]
@@ -162,11 +189,11 @@ async def clear_chat(clear_request: ClearRequest):
     if session_id in chat_sessions:
         # Create a new session with the same ID
         chat_sessions[session_id] = create_chat_session(file_context)
-        logger.info(f"Cleared chat session: {session_id}")
+        logger.info(f"Cleared chat session: {session_id[:8]}")
         return {"status": "Chat session cleared", "session_id": session_id}
     else:
-        logger.warning(f"Session ID not found: {session_id}")
-        raise HTTPException(status_code=404, detail=f"Session ID {session_id} not found")
+        logger.warning(f"Session not found: {session_id[:8]}")
+        raise HTTPException(status_code=404, detail=f"Session not found")
 
 @app.post("/sql", response_model=ChatResponse)
 async def direct_sql(sql_request: DirectSQLRequest):
@@ -177,13 +204,13 @@ async def direct_sql(sql_request: DirectSQLRequest):
     if not session_id or session_id not in chat_sessions:
         session_id = str(uuid.uuid4())
         chat_sessions[session_id] = create_chat_session(file_context)
-        logger.info(f"Created new chat session for SQL query: {session_id}")
+        logger.info(f"New SQL session: {session_id[:8]}")
     
     # Get the chat session
     chat = chat_sessions[session_id]
     
     # Execute the SQL query
-    logger.info(f"Executing direct SQL query: {sql_request.query[:50]}...")
+    logger.info(f"SQL: '{sql_request.query[:50]}...'")
     query_result, error = execute_sql_query(sql_request.query)
     
     if error:
@@ -198,7 +225,7 @@ async def direct_sql(sql_request: DirectSQLRequest):
     else:
         # Ask AI to interpret the results
         try:
-            logger.info(f"SQL query executed successfully")
+            logger.info(f"SQL executed successfully")
             interpretation_prompt = f"The SQL query '{sql_request.query}' returned the following results:\n\n{query_result}\n\nPlease analyze these results and provide a concise interpretation."
             interpretation_response = chat.send_message(interpretation_prompt)
             interpretation = interpretation_response.text
@@ -217,4 +244,29 @@ async def direct_sql(sql_request: DirectSQLRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app:app", host=API_HOST, port=API_PORT, reload=True)
+    
+    # More concise logging for uvicorn
+    log_config = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "default": {
+                "()": "uvicorn.logging.DefaultFormatter",
+                "fmt": "%(levelprefix)s %(message)s",
+            },
+        },
+        "handlers": {
+            "default": {
+                "formatter": "default",
+                "class": "logging.StreamHandler",
+                "stream": "ext://sys.stderr",
+            },
+        },
+        "loggers": {
+            "uvicorn": {"handlers": ["default"], "level": "INFO"},
+            "uvicorn.error": {"level": "INFO"},
+            "uvicorn.access": {"handlers": ["default"], "level": "INFO", "propagate": False},
+        },
+    }
+    
+    uvicorn.run("app:app", host=API_HOST, port=API_PORT, reload=True, log_config=log_config)
