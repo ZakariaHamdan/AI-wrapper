@@ -1,24 +1,33 @@
-// App.jsx with dark mode set as default
+// App.jsx
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import ChatPanel from './components/ChatPanel';
-import FileUpload from './components/FileUpload'; // New import
+import FileAnalysisPanel from './components/FileAnalysisPanel';
 import * as api from './services/api';
 
 function App() {
-  // Set dark mode as default
   const [darkMode, setDarkMode] = useState(true);
   const [activeTab, setActiveTab] = useState('chat');
-  const [apiStatus, setApiStatus] = useState(false);
+  const [apiStatus, setApiStatus] = useState({
+    dbApi: false,
+    fileApi: false
+  });
   
   // Check API status on mount
   useEffect(() => {
     const initApp = async () => {
       try {
-        await api.checkApiStatus();
-        setApiStatus(true);
+        await api.checkDbApiStatus();
+        setApiStatus(prev => ({ ...prev, dbApi: true }));
       } catch (error) {
-        console.error('API connection error:', error);
+        console.error('Database API connection error:', error);
+      }
+      
+      try {
+        await api.checkFileApiStatus();
+        setApiStatus(prev => ({ ...prev, fileApi: true }));
+      } catch (error) {
+        console.error('File Analysis API connection error:', error);
       }
     };
     
@@ -37,7 +46,7 @@ function App() {
       
       <main className="container mx-auto p-4">
         {activeTab === 'chat' && <ChatPanel />}
-        {activeTab === 'upload' && <FileUpload />}
+        {activeTab === 'fileAnalysis' && <FileAnalysisPanel />}
       </main>
     </div>
   );

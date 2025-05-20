@@ -24,8 +24,8 @@ function ChatPanel() {
     setLoading(true);
     
     try {
-      // Call API
-      const response = await api.sendChatMessage(input, sessionId);
+      // Call Database Query API
+      const response = await api.sendDbChatMessage(input, sessionId);
       
       // Save session ID if first message
       if (!sessionId && response.session_id) {
@@ -57,6 +57,63 @@ function ChatPanel() {
       e.preventDefault();
       handleSend();
     }
+  };
+  
+  const handleClearChat = async () => {
+    if (!sessionId) return;
+    
+    try {
+      await api.clearDbChat(sessionId);
+      setMessages([
+        { sender: 'assistant', content: 'Chat session cleared. How can I help you with your database queries?' }
+      ]);
+    } catch (error) {
+      console.error('Error clearing chat:', error);
+      setMessages(prev => [...prev, { 
+        sender: 'assistant', 
+        content: 'Sorry, there was an error clearing the chat session. Please try again.' 
+      }]);
+    }
+  };
+  
+  const handleRunSqlDirectly = () => {
+    const sqlQuery = window.prompt("Enter your SQL query:");
+    if (!sqlQuery) return;
+    
+    // Add the SQL query as a user message
+    setMessages(prev => [...prev, { sender: 'user', content: sqlQuery }]);
+    setLoading(true);
+    
+    // Use the same handler as regular messages
+    const sendSqlQuery = async () => {
+      try {
+        const response = await api.sendDbChatMessage(sqlQuery, sessionId);
+        
+        // Save session ID if first message
+        if (!sessionId && response.session_id) {
+          setSessionId(response.session_id);
+        }
+        
+        // Add assistant response
+        setMessages(prev => [...prev, { 
+          sender: 'assistant', 
+          content: response.response,
+          sqlQuery: response.sql_query,
+          sqlResult: response.sql_result,
+          sqlError: response.sql_error
+        }]);
+      } catch (error) {
+        console.error('Error executing SQL query:', error);
+        setMessages(prev => [...prev, { 
+          sender: 'assistant', 
+          content: 'Sorry, there was an error executing your SQL query. Please try again.' 
+        }]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    sendSqlQuery();
   };
   
   return (
@@ -98,6 +155,33 @@ function ChatPanel() {
           >
             Send
           </button>
+        </div>
+        
+        {/* Action buttons */}
+        <div className="flex justify-between mt-2">
+          <div className="flex space-x-2">
+            <button
+              className="text-sm text-gray-400 hover:text-gray-300"
+              onClick={handleClearChat}
+              disabled={loading || !sessionId}
+            >
+              Clear Chat
+            </button>
+            <button
+              className="text-sm text-gray-400 hover:text-gray-300"
+              onClick={handleRunSqlDirectly}
+              disabled={loading}
+            >
+              Run SQL Query
+            </button>
+          </div>
+          
+          {/* Display session ID for reference */}
+          {sessionId && (
+            <div className="text-xs text-gray-500">
+              Session ID: {sessionId.substring(0, 8)}...
+            </div>
+          )}
         </div>
       </div>
     </div>
