@@ -1048,3 +1048,622 @@ asyncio.exceptions.CancelledError
 2025-05-18 16:35:11,140 - INFO - Loaded file: UserDetail.cs
 2025-05-18 16:35:11,141 - INFO - Server started - Loaded 32 context files
 2025-05-18 16:35:11,247 - INFO - Application started with working database connection.
+2025-05-19 15:57:12,947 - INFO - Loaded file: BaseEntity.cs
+2025-05-19 15:57:12,972 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-19 15:57:13,007 - INFO - Loaded file: Category.cs
+2025-05-19 15:57:13,036 - INFO - Loaded file: City.cs
+2025-05-19 15:57:13,071 - INFO - Loaded file: Company.cs
+2025-05-19 15:57:13,097 - INFO - Loaded file: Country.cs
+2025-05-19 15:57:13,125 - INFO - Loaded file: Currency.cs
+2025-05-19 15:57:13,152 - INFO - Loaded file: Device.cs
+2025-05-19 15:57:13,168 - INFO - Loaded file: Employee.cs
+2025-05-19 15:57:13,192 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-19 15:57:13,212 - INFO - Loaded file: EmployeeSite.cs
+2025-05-19 15:57:13,222 - INFO - Loaded file: MainContractor.cs
+2025-05-19 15:57:13,241 - INFO - Loaded file: MainContractorProject.cs
+2025-05-19 15:57:13,255 - INFO - Loaded file: MainEntity.cs
+2025-05-19 15:57:13,267 - INFO - Loaded file: Nationality.cs
+2025-05-19 15:57:13,278 - INFO - Loaded file: Notification.cs
+2025-05-19 15:57:13,307 - INFO - Loaded file: Position.cs
+2025-05-19 15:57:13,317 - INFO - Loaded file: Project.cs
+2025-05-19 15:57:13,343 - INFO - Loaded file: ProjectSite.cs
+2025-05-19 15:57:13,376 - INFO - Loaded file: PunchLog.cs
+2025-05-19 15:57:13,388 - INFO - Loaded file: Region.cs
+2025-05-19 15:57:13,418 - INFO - Loaded file: Schedule.cs
+2025-05-19 15:57:13,439 - INFO - Loaded file: ScheduleDay.cs
+2025-05-19 15:57:13,450 - INFO - Loaded file: Shift.cs
+2025-05-19 15:57:13,465 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-19 15:57:13,490 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-19 15:57:13,524 - INFO - Loaded file: Site.cs
+2025-05-19 15:57:13,561 - INFO - Loaded file: Specification.cs
+2025-05-19 15:57:13,585 - INFO - Loaded file: SubContractor.cs
+2025-05-19 15:57:13,599 - INFO - Loaded file: SubContractorType.cs
+2025-05-19 15:57:13,632 - INFO - Loaded file: Test.cs
+2025-05-19 15:57:13,662 - INFO - Loaded file: UserDetail.cs
+2025-05-19 15:57:13,664 - INFO - Server started - Loaded 32 context files
+2025-05-19 15:57:14,404 - INFO - Application started with working database connection.
+2025-05-19 15:57:21,738 - INFO - Loaded file: BaseEntity.cs
+2025-05-19 15:57:21,740 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-19 15:57:21,740 - INFO - Loaded file: Category.cs
+2025-05-19 15:57:21,741 - INFO - Loaded file: City.cs
+2025-05-19 15:57:21,741 - INFO - Loaded file: Company.cs
+2025-05-19 15:57:21,741 - INFO - Loaded file: Country.cs
+2025-05-19 15:57:21,743 - INFO - Loaded file: Currency.cs
+2025-05-19 15:57:21,743 - INFO - Loaded file: Device.cs
+2025-05-19 15:57:21,745 - INFO - Loaded file: Employee.cs
+2025-05-19 15:57:21,745 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-19 15:57:21,746 - INFO - Loaded file: EmployeeSite.cs
+2025-05-19 15:57:21,746 - INFO - Loaded file: MainContractor.cs
+2025-05-19 15:57:21,747 - INFO - Loaded file: MainContractorProject.cs
+2025-05-19 15:57:21,749 - INFO - Loaded file: MainEntity.cs
+2025-05-19 15:57:21,749 - INFO - Loaded file: Nationality.cs
+2025-05-19 15:57:21,749 - INFO - Loaded file: Notification.cs
+2025-05-19 15:57:21,750 - INFO - Loaded file: Position.cs
+2025-05-19 15:57:21,751 - INFO - Loaded file: Project.cs
+2025-05-19 15:57:21,751 - INFO - Loaded file: ProjectSite.cs
+2025-05-19 15:57:21,751 - INFO - Loaded file: PunchLog.cs
+2025-05-19 15:57:21,753 - INFO - Loaded file: Region.cs
+2025-05-19 15:57:21,753 - INFO - Loaded file: Schedule.cs
+2025-05-19 15:57:21,753 - INFO - Loaded file: ScheduleDay.cs
+2025-05-19 15:57:21,755 - INFO - Loaded file: Shift.cs
+2025-05-19 15:57:21,755 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-19 15:57:21,755 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-19 15:57:21,755 - INFO - Loaded file: Site.cs
+2025-05-19 15:57:21,756 - INFO - Loaded file: Specification.cs
+2025-05-19 15:57:21,756 - INFO - Loaded file: SubContractor.cs
+2025-05-19 15:57:21,756 - INFO - Loaded file: SubContractorType.cs
+2025-05-19 15:57:21,758 - INFO - Loaded file: Test.cs
+2025-05-19 15:57:21,758 - INFO - Loaded file: UserDetail.cs
+2025-05-19 15:57:21,759 - INFO - Loaded file: BaseEntity.cs
+2025-05-19 15:57:21,762 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-19 15:57:21,764 - INFO - Loaded file: Category.cs
+2025-05-19 15:57:21,764 - INFO - Loaded file: City.cs
+2025-05-19 15:57:21,765 - INFO - Loaded file: Company.cs
+2025-05-19 15:57:21,766 - INFO - Loaded file: Country.cs
+2025-05-19 15:57:21,767 - INFO - Loaded file: Currency.cs
+2025-05-19 15:57:21,768 - INFO - Loaded file: Device.cs
+2025-05-19 15:57:21,768 - INFO - Loaded file: Employee.cs
+2025-05-19 15:57:21,769 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-19 15:57:21,771 - INFO - Loaded file: EmployeeSite.cs
+2025-05-19 15:57:21,771 - INFO - Loaded file: MainContractor.cs
+2025-05-19 15:57:21,773 - INFO - Loaded file: MainContractorProject.cs
+2025-05-19 15:57:21,773 - INFO - Loaded file: MainEntity.cs
+2025-05-19 15:57:21,774 - INFO - Loaded file: Nationality.cs
+2025-05-19 15:57:21,774 - INFO - Loaded file: Notification.cs
+2025-05-19 15:57:21,776 - INFO - Loaded file: Position.cs
+2025-05-19 15:57:21,776 - INFO - Loaded file: Project.cs
+2025-05-19 15:57:21,777 - INFO - Loaded file: ProjectSite.cs
+2025-05-19 15:57:21,778 - INFO - Loaded file: PunchLog.cs
+2025-05-19 15:57:21,778 - INFO - Loaded file: Region.cs
+2025-05-19 15:57:21,780 - INFO - Loaded file: Schedule.cs
+2025-05-19 15:57:21,780 - INFO - Loaded file: ScheduleDay.cs
+2025-05-19 15:57:21,782 - INFO - Loaded file: Shift.cs
+2025-05-19 15:57:21,782 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-19 15:57:21,783 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-19 15:57:21,783 - INFO - Loaded file: Site.cs
+2025-05-19 15:57:21,785 - INFO - Loaded file: Specification.cs
+2025-05-19 15:57:21,785 - INFO - Loaded file: SubContractor.cs
+2025-05-19 15:57:21,786 - INFO - Loaded file: SubContractorType.cs
+2025-05-19 15:57:21,787 - INFO - Loaded file: Test.cs
+2025-05-19 15:57:21,788 - INFO - Loaded file: UserDetail.cs
+2025-05-19 15:57:21,788 - INFO - GET / - Status: 200 - 0.05s
+2025-05-19 15:57:21,791 - INFO - GET / - Status: 200 - 0.03s
+2025-05-19 15:57:46,430 - INFO - OPTIONS /chat - Status: 200 - 0.00s
+2025-05-19 15:57:46,437 - INFO - Chat [cb0d7e42]: 'hello...'
+2025-05-19 15:57:46,440 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-19 15:57:48,706 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-19 15:57:48,711 - INFO - AFC remote call 1 is done.
+2025-05-19 15:57:48,712 - INFO - New chat session: f3eacd39
+2025-05-19 15:57:48,712 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-19 15:57:49,954 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-19 15:57:49,956 - INFO - AFC remote call 1 is done.
+2025-05-19 15:57:49,956 - INFO - Regular response (no SQL needed)
+2025-05-19 15:57:49,957 - INFO - POST /chat - Status: 200 - 3.52s
+2025-05-20 12:41:58,631 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 12:41:58,648 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 12:41:58,666 - INFO - Loaded file: Category.cs
+2025-05-20 12:41:58,683 - INFO - Loaded file: City.cs
+2025-05-20 12:41:58,699 - INFO - Loaded file: Company.cs
+2025-05-20 12:41:58,712 - INFO - Loaded file: Country.cs
+2025-05-20 12:41:58,720 - INFO - Loaded file: Currency.cs
+2025-05-20 12:41:58,736 - INFO - Loaded file: Device.cs
+2025-05-20 12:41:58,754 - INFO - Loaded file: Employee.cs
+2025-05-20 12:41:58,770 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 12:41:58,786 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 12:41:58,797 - INFO - Loaded file: MainContractor.cs
+2025-05-20 12:41:58,814 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 12:41:58,824 - INFO - Loaded file: MainEntity.cs
+2025-05-20 12:41:58,837 - INFO - Loaded file: Nationality.cs
+2025-05-20 12:41:58,851 - INFO - Loaded file: Notification.cs
+2025-05-20 12:41:58,871 - INFO - Loaded file: Position.cs
+2025-05-20 12:41:58,882 - INFO - Loaded file: Project.cs
+2025-05-20 12:41:58,894 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 12:41:58,912 - INFO - Loaded file: PunchLog.cs
+2025-05-20 12:41:58,924 - INFO - Loaded file: Region.cs
+2025-05-20 12:41:58,940 - INFO - Loaded file: Schedule.cs
+2025-05-20 12:41:58,953 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 12:41:58,965 - INFO - Loaded file: Shift.cs
+2025-05-20 12:41:58,976 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 12:41:58,986 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 12:41:58,999 - INFO - Loaded file: Site.cs
+2025-05-20 12:41:59,010 - INFO - Loaded file: Specification.cs
+2025-05-20 12:41:59,019 - INFO - Loaded file: SubContractor.cs
+2025-05-20 12:41:59,029 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 12:41:59,045 - INFO - Loaded file: Test.cs
+2025-05-20 12:41:59,057 - INFO - Loaded file: UserDetail.cs
+2025-05-20 12:41:59,057 - INFO - Server started - Loaded 32 context files
+2025-05-20 12:42:00,555 - INFO - Application started with working database connection.
+2025-05-20 12:42:00,614 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 12:42:00,615 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 12:42:00,615 - INFO - Loaded file: Category.cs
+2025-05-20 12:42:00,615 - INFO - Loaded file: City.cs
+2025-05-20 12:42:00,615 - INFO - Loaded file: Company.cs
+2025-05-20 12:42:00,616 - INFO - Loaded file: Country.cs
+2025-05-20 12:42:00,616 - INFO - Loaded file: Currency.cs
+2025-05-20 12:42:00,617 - INFO - Loaded file: Device.cs
+2025-05-20 12:42:00,617 - INFO - Loaded file: Employee.cs
+2025-05-20 12:42:00,617 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 12:42:00,618 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 12:42:00,618 - INFO - Loaded file: MainContractor.cs
+2025-05-20 12:42:00,618 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 12:42:00,618 - INFO - Loaded file: MainEntity.cs
+2025-05-20 12:42:00,618 - INFO - Loaded file: Nationality.cs
+2025-05-20 12:42:00,619 - INFO - Loaded file: Notification.cs
+2025-05-20 12:42:00,619 - INFO - Loaded file: Position.cs
+2025-05-20 12:42:00,619 - INFO - Loaded file: Project.cs
+2025-05-20 12:42:00,619 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 12:42:00,619 - INFO - Loaded file: PunchLog.cs
+2025-05-20 12:42:00,619 - INFO - Loaded file: Region.cs
+2025-05-20 12:42:00,619 - INFO - Loaded file: Schedule.cs
+2025-05-20 12:42:00,621 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 12:42:00,621 - INFO - Loaded file: Shift.cs
+2025-05-20 12:42:00,621 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 12:42:00,621 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 12:42:00,621 - INFO - Loaded file: Site.cs
+2025-05-20 12:42:00,621 - INFO - Loaded file: Specification.cs
+2025-05-20 12:42:00,623 - INFO - Loaded file: SubContractor.cs
+2025-05-20 12:42:00,623 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 12:42:00,623 - INFO - Loaded file: Test.cs
+2025-05-20 12:42:00,623 - INFO - Loaded file: UserDetail.cs
+2025-05-20 12:42:00,624 - INFO - GET / - Status: 200 - 0.01s
+2025-05-20 12:42:00,627 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 12:42:00,627 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 12:42:00,628 - INFO - Loaded file: Category.cs
+2025-05-20 12:42:00,628 - INFO - Loaded file: City.cs
+2025-05-20 12:42:00,629 - INFO - Loaded file: Company.cs
+2025-05-20 12:42:00,629 - INFO - Loaded file: Country.cs
+2025-05-20 12:42:00,629 - INFO - Loaded file: Currency.cs
+2025-05-20 12:42:00,630 - INFO - Loaded file: Device.cs
+2025-05-20 12:42:00,630 - INFO - Loaded file: Employee.cs
+2025-05-20 12:42:00,630 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 12:42:00,630 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 12:42:00,630 - INFO - Loaded file: MainContractor.cs
+2025-05-20 12:42:00,630 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 12:42:00,631 - INFO - Loaded file: MainEntity.cs
+2025-05-20 12:42:00,632 - INFO - Loaded file: Nationality.cs
+2025-05-20 12:42:00,632 - INFO - Loaded file: Notification.cs
+2025-05-20 12:42:00,632 - INFO - Loaded file: Position.cs
+2025-05-20 12:42:00,632 - INFO - Loaded file: Project.cs
+2025-05-20 12:42:00,632 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 12:42:00,633 - INFO - Loaded file: PunchLog.cs
+2025-05-20 12:42:00,633 - INFO - Loaded file: Region.cs
+2025-05-20 12:42:00,634 - INFO - Loaded file: Schedule.cs
+2025-05-20 12:42:00,634 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 12:42:00,634 - INFO - Loaded file: Shift.cs
+2025-05-20 12:42:00,634 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 12:42:00,635 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 12:42:00,635 - INFO - Loaded file: Site.cs
+2025-05-20 12:42:00,635 - INFO - Loaded file: Specification.cs
+2025-05-20 12:42:00,635 - INFO - Loaded file: SubContractor.cs
+2025-05-20 12:42:00,635 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 12:42:00,635 - INFO - Loaded file: Test.cs
+2025-05-20 12:42:00,636 - INFO - Loaded file: UserDetail.cs
+2025-05-20 12:42:00,637 - INFO - GET / - Status: 200 - 0.01s
+2025-05-20 12:42:36,299 - INFO - OPTIONS /chat - Status: 200 - 0.00s
+2025-05-20 12:42:36,311 - INFO - Chat [822a0bc1]: 'Hello...'
+2025-05-20 12:42:36,313 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 12:42:37,498 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 12:42:37,502 - INFO - AFC remote call 1 is done.
+2025-05-20 12:42:37,503 - INFO - New chat session: 3933e382
+2025-05-20 12:42:37,503 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 12:42:38,970 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 12:42:38,970 - INFO - AFC remote call 1 is done.
+2025-05-20 12:42:38,971 - INFO - Regular response (no SQL needed)
+2025-05-20 12:42:38,971 - INFO - POST /chat - Status: 200 - 2.66s
+2025-05-20 12:42:46,095 - INFO - Chat [29a2bb02]: 'what was my last message...'
+2025-05-20 12:42:46,096 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 12:42:47,627 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 12:42:47,628 - INFO - AFC remote call 1 is done.
+2025-05-20 12:42:47,628 - INFO - Regular response (no SQL needed)
+2025-05-20 12:42:47,628 - INFO - POST /chat - Status: 200 - 1.53s
+2025-05-20 12:42:55,490 - INFO - Chat [005fbfc9]: 'how many notifications do I ha...'
+2025-05-20 12:42:55,491 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 12:42:56,814 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 12:42:56,814 - INFO - AFC remote call 1 is done.
+2025-05-20 12:42:56,814 - INFO - AI generated SQL query
+2025-05-20 12:42:56,821 - ERROR - Database error: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Must declare the scalar variable "@UserId". (137) (SQLExecDirectW)')
+2025-05-20 12:42:56,823 - WARNING - SQL Error: Database error: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Must declare the scalar variable "@UserId". (137) (SQLExecDirectW)')
+2025-05-20 12:42:56,823 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 12:42:58,528 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 12:42:58,531 - INFO - AFC remote call 1 is done.
+2025-05-20 12:42:58,531 - INFO - POST /chat - Status: 200 - 3.04s
+2025-05-20 12:43:11,875 - INFO - Chat [7b84fb7a]: 'How many notifications is ther...'
+2025-05-20 12:43:11,876 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 12:43:12,871 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 12:43:12,871 - INFO - AFC remote call 1 is done.
+2025-05-20 12:43:12,872 - INFO - AI generated SQL query
+2025-05-20 12:43:12,876 - INFO - SQL query executed successfully
+2025-05-20 12:43:12,877 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 12:43:14,559 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 12:43:14,560 - INFO - AFC remote call 1 is done.
+2025-05-20 12:43:14,560 - INFO - POST /chat - Status: 200 - 2.69s
+2025-05-20 12:43:21,663 - INFO - Chat [8f4f42c2]: 'and what is their titles...'
+2025-05-20 12:43:21,663 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 12:43:23,106 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 12:43:23,107 - INFO - AFC remote call 1 is done.
+2025-05-20 12:43:23,107 - INFO - AI generated SQL query
+2025-05-20 12:43:23,112 - INFO - SQL query executed successfully
+2025-05-20 12:43:23,112 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 12:43:24,833 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 12:43:24,835 - INFO - AFC remote call 1 is done.
+2025-05-20 12:43:24,835 - INFO - POST /chat - Status: 200 - 3.17s
+2025-05-20 12:43:32,999 - INFO - Chat [e9b41872]: 'and the oldest one ?...'
+2025-05-20 12:43:33,001 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 12:43:33,863 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 12:43:33,865 - INFO - AFC remote call 1 is done.
+2025-05-20 12:43:33,865 - INFO - AI generated SQL query
+2025-05-20 12:43:33,870 - INFO - SQL query executed successfully
+2025-05-20 12:43:33,871 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 12:43:35,728 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 12:43:35,731 - INFO - AFC remote call 1 is done.
+2025-05-20 12:43:35,732 - INFO - POST /chat - Status: 200 - 2.74s
+2025-05-20 12:58:44,237 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 12:58:44,237 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 12:58:44,237 - INFO - Loaded file: Category.cs
+2025-05-20 12:58:44,237 - INFO - Loaded file: City.cs
+2025-05-20 12:58:44,237 - INFO - Loaded file: Company.cs
+2025-05-20 12:58:44,237 - INFO - Loaded file: Country.cs
+2025-05-20 12:58:44,239 - INFO - Loaded file: Currency.cs
+2025-05-20 12:58:44,239 - INFO - Loaded file: Device.cs
+2025-05-20 12:58:44,239 - INFO - Loaded file: Employee.cs
+2025-05-20 12:58:44,239 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 12:58:44,239 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 12:58:44,240 - INFO - Loaded file: MainContractor.cs
+2025-05-20 12:58:44,240 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 12:58:44,240 - INFO - Loaded file: MainEntity.cs
+2025-05-20 12:58:44,240 - INFO - Loaded file: Nationality.cs
+2025-05-20 12:58:44,240 - INFO - Loaded file: Notification.cs
+2025-05-20 12:58:44,240 - INFO - Loaded file: Position.cs
+2025-05-20 12:58:44,240 - INFO - Loaded file: Project.cs
+2025-05-20 12:58:44,242 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 12:58:44,242 - INFO - Loaded file: PunchLog.cs
+2025-05-20 12:58:44,242 - INFO - Loaded file: Region.cs
+2025-05-20 12:58:44,242 - INFO - Loaded file: Schedule.cs
+2025-05-20 12:58:44,242 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 12:58:44,244 - INFO - Loaded file: Shift.cs
+2025-05-20 12:58:44,244 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 12:58:44,244 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 12:58:44,244 - INFO - Loaded file: Site.cs
+2025-05-20 12:58:44,244 - INFO - Loaded file: Specification.cs
+2025-05-20 12:58:44,245 - INFO - Loaded file: SubContractor.cs
+2025-05-20 12:58:44,245 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 12:58:44,245 - INFO - Loaded file: Test.cs
+2025-05-20 12:58:44,245 - INFO - Loaded file: UserDetail.cs
+2025-05-20 12:58:44,245 - INFO - Server started - Loaded 32 context files
+2025-05-20 12:58:45,037 - INFO - Application started with working database connection.
+2025-05-20 12:59:30,666 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 12:59:30,667 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 12:59:30,667 - INFO - Loaded file: Category.cs
+2025-05-20 12:59:30,667 - INFO - Loaded file: City.cs
+2025-05-20 12:59:30,667 - INFO - Loaded file: Company.cs
+2025-05-20 12:59:30,667 - INFO - Loaded file: Country.cs
+2025-05-20 12:59:30,667 - INFO - Loaded file: Currency.cs
+2025-05-20 12:59:30,667 - INFO - Loaded file: Device.cs
+2025-05-20 12:59:30,669 - INFO - Loaded file: Employee.cs
+2025-05-20 12:59:30,669 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 12:59:30,669 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 12:59:30,670 - INFO - Loaded file: MainContractor.cs
+2025-05-20 12:59:30,670 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 12:59:30,670 - INFO - Loaded file: MainEntity.cs
+2025-05-20 12:59:30,670 - INFO - Loaded file: Nationality.cs
+2025-05-20 12:59:30,670 - INFO - Loaded file: Notification.cs
+2025-05-20 12:59:30,670 - INFO - Loaded file: Position.cs
+2025-05-20 12:59:30,671 - INFO - Loaded file: Project.cs
+2025-05-20 12:59:30,671 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 12:59:30,671 - INFO - Loaded file: PunchLog.cs
+2025-05-20 12:59:30,671 - INFO - Loaded file: Region.cs
+2025-05-20 12:59:30,671 - INFO - Loaded file: Schedule.cs
+2025-05-20 12:59:30,672 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 12:59:30,672 - INFO - Loaded file: Shift.cs
+2025-05-20 12:59:30,672 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 12:59:30,672 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 12:59:30,672 - INFO - Loaded file: Site.cs
+2025-05-20 12:59:30,672 - INFO - Loaded file: Specification.cs
+2025-05-20 12:59:30,672 - INFO - Loaded file: SubContractor.cs
+2025-05-20 12:59:30,672 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 12:59:30,673 - INFO - Loaded file: Test.cs
+2025-05-20 12:59:30,674 - INFO - Loaded file: UserDetail.cs
+2025-05-20 12:59:30,674 - INFO - Server started - Loaded 32 context files
+2025-05-20 12:59:30,754 - INFO - Application started with working database connection.
+2025-05-20 13:02:46,355 - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2025-05-20 13:11:10,211 - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2025-05-20 13:12:52,882 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 13:12:52,884 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 13:12:52,884 - INFO - Loaded file: Category.cs
+2025-05-20 13:12:52,884 - INFO - Loaded file: City.cs
+2025-05-20 13:12:52,884 - INFO - Loaded file: Company.cs
+2025-05-20 13:12:52,885 - INFO - Loaded file: Country.cs
+2025-05-20 13:12:52,885 - INFO - Loaded file: Currency.cs
+2025-05-20 13:12:52,886 - INFO - Loaded file: Device.cs
+2025-05-20 13:12:52,886 - INFO - Loaded file: Employee.cs
+2025-05-20 13:12:52,887 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 13:12:52,887 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 13:12:52,887 - INFO - Loaded file: MainContractor.cs
+2025-05-20 13:12:52,887 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 13:12:52,888 - INFO - Loaded file: MainEntity.cs
+2025-05-20 13:12:52,888 - INFO - Loaded file: Nationality.cs
+2025-05-20 13:12:52,888 - INFO - Loaded file: Notification.cs
+2025-05-20 13:12:52,888 - INFO - Loaded file: Position.cs
+2025-05-20 13:12:52,889 - INFO - Loaded file: Project.cs
+2025-05-20 13:12:52,889 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 13:12:52,890 - INFO - Loaded file: PunchLog.cs
+2025-05-20 13:12:52,890 - INFO - Loaded file: Region.cs
+2025-05-20 13:12:52,890 - INFO - Loaded file: Schedule.cs
+2025-05-20 13:12:52,890 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 13:12:52,891 - INFO - Loaded file: Shift.cs
+2025-05-20 13:12:52,891 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 13:12:52,891 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 13:12:52,891 - INFO - Loaded file: Site.cs
+2025-05-20 13:12:52,891 - INFO - Loaded file: Specification.cs
+2025-05-20 13:12:52,892 - INFO - Loaded file: SubContractor.cs
+2025-05-20 13:12:52,893 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 13:12:52,893 - INFO - Loaded file: Test.cs
+2025-05-20 13:12:52,893 - INFO - Loaded file: UserDetail.cs
+2025-05-20 13:12:52,893 - INFO - Server started - Loaded 32 context files
+2025-05-20 13:12:53,625 - INFO - Application started with working database connection.
+2025-05-20 13:13:07,326 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 13:13:07,326 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 13:13:07,326 - INFO - Loaded file: Category.cs
+2025-05-20 13:13:07,326 - INFO - Loaded file: City.cs
+2025-05-20 13:13:07,326 - INFO - Loaded file: Company.cs
+2025-05-20 13:13:07,327 - INFO - Loaded file: Country.cs
+2025-05-20 13:13:07,327 - INFO - Loaded file: Currency.cs
+2025-05-20 13:13:07,327 - INFO - Loaded file: Device.cs
+2025-05-20 13:13:07,328 - INFO - Loaded file: Employee.cs
+2025-05-20 13:13:07,328 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 13:13:07,328 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 13:13:07,329 - INFO - Loaded file: MainContractor.cs
+2025-05-20 13:13:07,329 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 13:13:07,329 - INFO - Loaded file: MainEntity.cs
+2025-05-20 13:13:07,330 - INFO - Loaded file: Nationality.cs
+2025-05-20 13:13:07,331 - INFO - Loaded file: Notification.cs
+2025-05-20 13:13:07,331 - INFO - Loaded file: Position.cs
+2025-05-20 13:13:07,332 - INFO - Loaded file: Project.cs
+2025-05-20 13:13:07,332 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 13:13:07,333 - INFO - Loaded file: PunchLog.cs
+2025-05-20 13:13:07,333 - INFO - Loaded file: Region.cs
+2025-05-20 13:13:07,333 - INFO - Loaded file: Schedule.cs
+2025-05-20 13:13:07,334 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 13:13:07,334 - INFO - Loaded file: Shift.cs
+2025-05-20 13:13:07,334 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 13:13:07,335 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 13:13:07,335 - INFO - Loaded file: Site.cs
+2025-05-20 13:13:07,335 - INFO - Loaded file: Specification.cs
+2025-05-20 13:13:07,336 - INFO - Loaded file: SubContractor.cs
+2025-05-20 13:13:07,336 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 13:13:07,336 - INFO - Loaded file: Test.cs
+2025-05-20 13:13:07,336 - INFO - Loaded file: UserDetail.cs
+2025-05-20 13:13:07,336 - INFO - Server started - Loaded 32 context files
+2025-05-20 13:13:07,490 - INFO - Application started with working database connection.
+2025-05-20 13:13:12,134 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 13:13:12,135 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 13:13:12,135 - INFO - Loaded file: Category.cs
+2025-05-20 13:13:12,135 - INFO - Loaded file: City.cs
+2025-05-20 13:13:12,136 - INFO - Loaded file: Company.cs
+2025-05-20 13:13:12,137 - INFO - Loaded file: Country.cs
+2025-05-20 13:13:12,137 - INFO - Loaded file: Currency.cs
+2025-05-20 13:13:12,138 - INFO - Loaded file: Device.cs
+2025-05-20 13:13:12,138 - INFO - Loaded file: Employee.cs
+2025-05-20 13:13:12,138 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 13:13:12,138 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 13:13:12,138 - INFO - Loaded file: MainContractor.cs
+2025-05-20 13:13:12,139 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 13:13:12,139 - INFO - Loaded file: MainEntity.cs
+2025-05-20 13:13:12,140 - INFO - Loaded file: Nationality.cs
+2025-05-20 13:13:12,140 - INFO - Loaded file: Notification.cs
+2025-05-20 13:13:12,141 - INFO - Loaded file: Position.cs
+2025-05-20 13:13:12,141 - INFO - Loaded file: Project.cs
+2025-05-20 13:13:12,141 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 13:13:12,142 - INFO - Loaded file: PunchLog.cs
+2025-05-20 13:13:12,143 - INFO - Loaded file: Region.cs
+2025-05-20 13:13:12,143 - INFO - Loaded file: Schedule.cs
+2025-05-20 13:13:12,143 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 13:13:12,144 - INFO - Loaded file: Shift.cs
+2025-05-20 13:13:12,144 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 13:13:12,144 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 13:13:12,144 - INFO - Loaded file: Site.cs
+2025-05-20 13:13:12,145 - INFO - Loaded file: Specification.cs
+2025-05-20 13:13:12,146 - INFO - Loaded file: SubContractor.cs
+2025-05-20 13:13:12,146 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 13:13:12,146 - INFO - Loaded file: Test.cs
+2025-05-20 13:13:12,147 - INFO - Loaded file: UserDetail.cs
+2025-05-20 13:13:12,147 - INFO - GET / - Status: 200 - 0.01s
+2025-05-20 13:13:12,150 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 13:13:12,150 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 13:13:12,151 - INFO - Loaded file: Category.cs
+2025-05-20 13:13:12,152 - INFO - Loaded file: City.cs
+2025-05-20 13:13:12,152 - INFO - Loaded file: Company.cs
+2025-05-20 13:13:12,153 - INFO - Loaded file: Country.cs
+2025-05-20 13:13:12,153 - INFO - Loaded file: Currency.cs
+2025-05-20 13:13:12,154 - INFO - Loaded file: Device.cs
+2025-05-20 13:13:12,154 - INFO - Loaded file: Employee.cs
+2025-05-20 13:13:12,154 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 13:13:12,155 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 13:13:12,155 - INFO - Loaded file: MainContractor.cs
+2025-05-20 13:13:12,156 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 13:13:12,156 - INFO - Loaded file: MainEntity.cs
+2025-05-20 13:13:12,156 - INFO - Loaded file: Nationality.cs
+2025-05-20 13:13:12,156 - INFO - Loaded file: Notification.cs
+2025-05-20 13:13:12,156 - INFO - Loaded file: Position.cs
+2025-05-20 13:13:12,158 - INFO - Loaded file: Project.cs
+2025-05-20 13:13:12,158 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 13:13:12,158 - INFO - Loaded file: PunchLog.cs
+2025-05-20 13:13:12,158 - INFO - Loaded file: Region.cs
+2025-05-20 13:13:12,158 - INFO - Loaded file: Schedule.cs
+2025-05-20 13:13:12,160 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 13:13:12,160 - INFO - Loaded file: Shift.cs
+2025-05-20 13:13:12,160 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 13:13:12,160 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 13:13:12,160 - INFO - Loaded file: Site.cs
+2025-05-20 13:13:12,161 - INFO - Loaded file: Specification.cs
+2025-05-20 13:13:12,161 - INFO - Loaded file: SubContractor.cs
+2025-05-20 13:13:12,161 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 13:13:12,162 - INFO - Loaded file: Test.cs
+2025-05-20 13:13:12,162 - INFO - Loaded file: UserDetail.cs
+2025-05-20 13:13:12,164 - INFO - GET / - Status: 200 - 0.02s
+2025-05-20 13:13:17,438 - INFO - File upload [3d40b87d]: 'PHD Dev OrgChart.xlsx'
+2025-05-20 13:13:17,962 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 13:13:19,770 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 13:13:19,772 - INFO - AFC remote call 1 is done.
+2025-05-20 13:13:19,773 - INFO - New file upload session: 1c08340b
+2025-05-20 13:13:19,773 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 13:13:20,851 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 13:13:20,852 - INFO - AFC remote call 1 is done.
+2025-05-20 13:13:20,853 - INFO - POST /upload - Status: 200 - 3.42s
+2025-05-20 13:28:53,165 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 13:28:53,166 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 13:28:53,166 - INFO - Loaded file: Category.cs
+2025-05-20 13:28:53,167 - INFO - Loaded file: City.cs
+2025-05-20 13:28:53,167 - INFO - Loaded file: Company.cs
+2025-05-20 13:28:53,167 - INFO - Loaded file: Country.cs
+2025-05-20 13:28:53,167 - INFO - Loaded file: Currency.cs
+2025-05-20 13:28:53,168 - INFO - Loaded file: Device.cs
+2025-05-20 13:28:53,168 - INFO - Loaded file: Employee.cs
+2025-05-20 13:28:53,169 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 13:28:53,169 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 13:28:53,171 - INFO - Loaded file: MainContractor.cs
+2025-05-20 13:28:53,171 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 13:28:53,171 - INFO - Loaded file: MainEntity.cs
+2025-05-20 13:28:53,171 - INFO - Loaded file: Nationality.cs
+2025-05-20 13:28:53,171 - INFO - Loaded file: Notification.cs
+2025-05-20 13:28:53,171 - INFO - Loaded file: Position.cs
+2025-05-20 13:28:53,173 - INFO - Loaded file: Project.cs
+2025-05-20 13:28:53,173 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 13:28:53,173 - INFO - Loaded file: PunchLog.cs
+2025-05-20 13:28:53,174 - INFO - Loaded file: Region.cs
+2025-05-20 13:28:53,174 - INFO - Loaded file: Schedule.cs
+2025-05-20 13:28:53,174 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 13:28:53,176 - INFO - Loaded file: Shift.cs
+2025-05-20 13:28:53,176 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 13:28:53,176 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 13:28:53,176 - INFO - Loaded file: Site.cs
+2025-05-20 13:28:53,176 - INFO - Loaded file: Specification.cs
+2025-05-20 13:28:53,177 - INFO - Loaded file: SubContractor.cs
+2025-05-20 13:28:53,177 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 13:28:53,177 - INFO - Loaded file: Test.cs
+2025-05-20 13:28:53,177 - INFO - Loaded file: UserDetail.cs
+2025-05-20 13:28:53,179 - INFO - Server started - Loaded 32 context files
+2025-05-20 13:28:54,046 - INFO - Application started with working database connection.
+2025-05-20 13:28:55,243 - INFO - OPTIONS /chat - Status: 200 - 0.00s
+2025-05-20 13:28:55,256 - INFO - Chat [8f6df78a]: 'how many notificatoins is ther...'
+2025-05-20 13:28:55,256 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 13:28:56,868 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 13:28:56,870 - INFO - AFC remote call 1 is done.
+2025-05-20 13:28:56,870 - INFO - New chat session: 12f24bbc
+2025-05-20 13:28:56,871 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 13:28:58,120 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 13:28:58,121 - INFO - AFC remote call 1 is done.
+2025-05-20 13:28:58,122 - INFO - AI generated SQL query
+2025-05-20 13:28:58,138 - INFO - SQL query executed successfully
+2025-05-20 13:28:58,138 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 13:28:59,468 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 13:28:59,470 - INFO - AFC remote call 1 is done.
+2025-05-20 13:28:59,472 - INFO - POST /chat - Status: 200 - 4.22s
+2025-05-20 13:28:59,475 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 13:28:59,476 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 13:28:59,476 - INFO - Loaded file: Category.cs
+2025-05-20 13:28:59,477 - INFO - Loaded file: City.cs
+2025-05-20 13:28:59,477 - INFO - Loaded file: Company.cs
+2025-05-20 13:28:59,477 - INFO - Loaded file: Country.cs
+2025-05-20 13:28:59,477 - INFO - Loaded file: Currency.cs
+2025-05-20 13:28:59,477 - INFO - Loaded file: Device.cs
+2025-05-20 13:28:59,479 - INFO - Loaded file: Employee.cs
+2025-05-20 13:28:59,479 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 13:28:59,479 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 13:28:59,479 - INFO - Loaded file: MainContractor.cs
+2025-05-20 13:28:59,479 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 13:28:59,480 - INFO - Loaded file: MainEntity.cs
+2025-05-20 13:28:59,480 - INFO - Loaded file: Nationality.cs
+2025-05-20 13:28:59,481 - INFO - Loaded file: Notification.cs
+2025-05-20 13:28:59,481 - INFO - Loaded file: Position.cs
+2025-05-20 13:28:59,481 - INFO - Loaded file: Project.cs
+2025-05-20 13:28:59,482 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 13:28:59,482 - INFO - Loaded file: PunchLog.cs
+2025-05-20 13:28:59,482 - INFO - Loaded file: Region.cs
+2025-05-20 13:28:59,482 - INFO - Loaded file: Schedule.cs
+2025-05-20 13:28:59,482 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 13:28:59,483 - INFO - Loaded file: Shift.cs
+2025-05-20 13:28:59,484 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 13:28:59,484 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 13:28:59,484 - INFO - Loaded file: Site.cs
+2025-05-20 13:28:59,485 - INFO - Loaded file: Specification.cs
+2025-05-20 13:28:59,485 - INFO - Loaded file: SubContractor.cs
+2025-05-20 13:28:59,485 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 13:28:59,486 - INFO - Loaded file: Test.cs
+2025-05-20 13:28:59,486 - INFO - Loaded file: UserDetail.cs
+2025-05-20 13:28:59,486 - INFO - Loaded file: BaseEntity.cs
+2025-05-20 13:28:59,487 - INFO - Loaded file: BioVisionDbContext.cs
+2025-05-20 13:28:59,487 - INFO - Loaded file: Category.cs
+2025-05-20 13:28:59,487 - INFO - Loaded file: City.cs
+2025-05-20 13:28:59,487 - INFO - Loaded file: Company.cs
+2025-05-20 13:28:59,488 - INFO - Loaded file: Country.cs
+2025-05-20 13:28:59,488 - INFO - Loaded file: Currency.cs
+2025-05-20 13:28:59,488 - INFO - Loaded file: Device.cs
+2025-05-20 13:28:59,488 - INFO - Loaded file: Employee.cs
+2025-05-20 13:28:59,488 - INFO - Loaded file: EmployeeAttendance.cs
+2025-05-20 13:28:59,488 - INFO - Loaded file: EmployeeSite.cs
+2025-05-20 13:28:59,489 - INFO - Loaded file: MainContractor.cs
+2025-05-20 13:28:59,490 - INFO - Loaded file: MainContractorProject.cs
+2025-05-20 13:28:59,490 - INFO - Loaded file: MainEntity.cs
+2025-05-20 13:28:59,490 - INFO - Loaded file: Nationality.cs
+2025-05-20 13:28:59,490 - INFO - Loaded file: Notification.cs
+2025-05-20 13:28:59,490 - INFO - Loaded file: Position.cs
+2025-05-20 13:28:59,491 - INFO - Loaded file: Project.cs
+2025-05-20 13:28:59,491 - INFO - Loaded file: ProjectSite.cs
+2025-05-20 13:28:59,491 - INFO - Loaded file: PunchLog.cs
+2025-05-20 13:28:59,491 - INFO - Loaded file: Region.cs
+2025-05-20 13:28:59,491 - INFO - Loaded file: Schedule.cs
+2025-05-20 13:28:59,491 - INFO - Loaded file: ScheduleDay.cs
+2025-05-20 13:28:59,491 - INFO - Loaded file: Shift.cs
+2025-05-20 13:28:59,492 - INFO - Loaded file: ShiftAssignment.cs
+2025-05-20 13:28:59,492 - INFO - Loaded file: ShiftSchedule.cs
+2025-05-20 13:28:59,492 - INFO - Loaded file: Site.cs
+2025-05-20 13:28:59,492 - INFO - Loaded file: Specification.cs
+2025-05-20 13:28:59,492 - INFO - Loaded file: SubContractor.cs
+2025-05-20 13:28:59,492 - INFO - Loaded file: SubContractorType.cs
+2025-05-20 13:28:59,492 - INFO - Loaded file: Test.cs
+2025-05-20 13:28:59,492 - INFO - Loaded file: UserDetail.cs
+2025-05-20 13:28:59,493 - INFO - GET / - Status: 200 - 0.02s
+2025-05-20 13:28:59,493 - INFO - GET / - Status: 200 - 0.02s
+2025-05-20 13:29:10,112 - INFO - Chat [e3333fc0]: 'hhow many notificatoins is the...'
+2025-05-20 13:29:10,113 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 13:29:11,188 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 13:29:11,190 - INFO - AFC remote call 1 is done.
+2025-05-20 13:29:11,190 - INFO - New chat session: aa699e6b
+2025-05-20 13:29:11,190 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 13:29:11,767 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 13:29:11,770 - INFO - AFC remote call 1 is done.
+2025-05-20 13:29:11,770 - INFO - AI generated SQL query
+2025-05-20 13:29:11,773 - INFO - SQL query executed successfully
+2025-05-20 13:29:11,774 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 13:29:12,936 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 13:29:12,937 - INFO - AFC remote call 1 is done.
+2025-05-20 13:29:12,937 - INFO - POST /chat - Status: 200 - 2.83s
