@@ -1,4 +1,4 @@
-// Header.jsx with improved dark mode styling
+// Header.jsx
 import React from 'react';
 
 function Header({ activeTab, setActiveTab, darkMode, setDarkMode, apiStatus }) {
@@ -7,7 +7,7 @@ function Header({ activeTab, setActiveTab, darkMode, setDarkMode, apiStatus }) {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <h1 className="text-xl font-semibold text-blue-400">SQL Database Assistant</h1>
+            <h1 className="text-xl font-semibold text-blue-400">AI Database & File Assistant</h1>
           </div>
           
           <nav className="flex space-x-2">
@@ -19,26 +19,33 @@ function Header({ activeTab, setActiveTab, darkMode, setDarkMode, apiStatus }) {
                   : 'text-gray-300 hover:bg-gray-700'
               }`}
             >
-              Chat
+              DB Query
             </button>
             
             <button
-              onClick={() => setActiveTab('upload')}
+              onClick={() => setActiveTab('fileAnalysis')}
               className={`px-4 py-2 rounded-md transition-colors duration-200 ${
-                activeTab === 'upload'
+                activeTab === 'fileAnalysis'
                   ? 'bg-blue-600 text-white'
                   : 'text-gray-300 hover:bg-gray-700'
               }`}
             >
-              Upload File
+              File Analysis
             </button>
           </nav>
           
           <div className="flex items-center space-x-4">
-            {/* API Status indicator */}
-            <div className="flex items-center bg-gray-700 px-3 py-1 rounded-full">
-              <div className={`w-2 h-2 rounded-full mr-2 ${apiStatus ? 'bg-green-500' : 'bg-red-500'}`}></div>
-              <span className="text-sm">{apiStatus ? 'Connected' : 'Offline'}</span>
+            {/* API Status indicators */}
+            <div className="flex space-x-2">
+              <div className="flex items-center bg-gray-700 px-3 py-1 rounded-full">
+                <div className={`w-2 h-2 rounded-full mr-2 ${apiStatus.dbApi ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                <span className="text-xs">DB API</span>
+              </div>
+              
+              <div className="flex items-center bg-gray-700 px-3 py-1 rounded-full">
+                <div className={`w-2 h-2 rounded-full mr-2 ${apiStatus.fileApi ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                <span className="text-xs">File API</span>
+              </div>
             </div>
             
             {/* Theme toggle */}
