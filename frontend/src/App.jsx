@@ -1,26 +1,22 @@
+// App.jsx with dark mode set as default
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import ChatPanel from './components/ChatPanel';
-import SqlEditor from './components/SqlEditor';
-import DatabaseSchema from './components/DatabaseSchema';
+import FileUpload from './components/FileUpload'; // New import
 import * as api from './services/api';
 
 function App() {
-  // State
-  const [darkMode, setDarkMode] = useState(false);
+  // Set dark mode as default
+  const [darkMode, setDarkMode] = useState(true);
   const [activeTab, setActiveTab] = useState('chat');
   const [apiStatus, setApiStatus] = useState(false);
-  const [schema, setSchema] = useState(null);
   
-  // Check API status and load schema on mount
+  // Check API status on mount
   useEffect(() => {
     const initApp = async () => {
       try {
         await api.checkApiStatus();
         setApiStatus(true);
-        
-        const dbSchema = await api.getDatabaseSchema();
-        setSchema(dbSchema);
       } catch (error) {
         console.error('API connection error:', error);
       }
@@ -30,7 +26,7 @@ function App() {
   }, []);
   
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
+    <div className={`min-h-screen transition-colors duration-200 ${darkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
       <Header 
         activeTab={activeTab} 
         setActiveTab={setActiveTab}
@@ -41,8 +37,7 @@ function App() {
       
       <main className="container mx-auto p-4">
         {activeTab === 'chat' && <ChatPanel />}
-        {activeTab === 'sql' && <SqlEditor />}
-        {activeTab === 'schema' && <DatabaseSchema schema={schema} />}
+        {activeTab === 'upload' && <FileUpload />}
       </main>
     </div>
   );

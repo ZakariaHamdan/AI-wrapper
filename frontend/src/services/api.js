@@ -58,4 +58,19 @@ export const clearChat = async (sessionId) => {
   return response.data;
 };
 
+export const uploadFile = async (formData, sessionId = null) => {
+  // Add session ID if provided
+  if (sessionId) {
+    formData.append('session_id', sessionId);
+  }
+  
+  const response = await api.post('/upload', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
+  
+  return response.data;
+};
+
 export default api;
