@@ -41,3 +41,27 @@
 2025-05-20 16:26:35,366 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
 2025-05-20 16:26:35,368 - INFO - AFC remote call 1 is done.
 2025-05-20 16:26:35,368 - INFO - POST /chat - Status: 200 - 1.14s
+2025-05-20 18:18:57,362 - INFO - GET / - Status: 200 - 0.00s
+2025-05-20 18:18:57,403 - INFO - GET / - Status: 200 - 0.00s
+2025-05-20 18:24:59,648 - INFO - GET / - Status: 200 - 0.00s
+2025-05-20 18:24:59,658 - INFO - GET / - Status: 200 - 0.00s
+2025-05-20 18:27:03,565 - INFO - File upload [b96d9331]: 'PHD Dev OrgChart.xlsx'
+2025-05-20 18:27:04,038 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 18:27:06,082 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 18:27:06,084 - INFO - AFC remote call 1 is done.
+2025-05-20 18:27:06,085 - INFO - New file analysis session: a4b0297c
+2025-05-20 18:27:06,085 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 18:27:11,040 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 18:27:11,043 - INFO - AFC remote call 1 is done.
+2025-05-20 18:27:11,045 - INFO - POST /upload - Status: 200 - 7.48s
+2025-05-20 18:27:24,929 - INFO - OPTIONS /chat - Status: 200 - 0.00s
+2025-05-20 18:27:24,935 - INFO - Chat [4d54b6a4]: 'what project is eli working on...'
+2025-05-20 18:27:24,935 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 18:27:26,528 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 18:27:26,530 - INFO - AFC remote call 1 is done.
+2025-05-20 18:27:26,531 - INFO - POST /chat - Status: 200 - 1.60s
+2025-05-20 18:27:32,345 - INFO - Chat [96fb8c07]: 'elie helaly...'
+2025-05-20 18:27:32,345 - INFO - AFC is enabled with max remote calls: 10.
+2025-05-20 18:27:33,644 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent "HTTP/1.1 200 OK"
+2025-05-20 18:27:33,644 - INFO - AFC remote call 1 is done.
+2025-05-20 18:27:33,645 - INFO - POST /chat - Status: 200 - 1.30s
