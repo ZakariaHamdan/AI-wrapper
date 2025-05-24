@@ -34,7 +34,7 @@ export const getDatabaseContext = async () => {
 };
 
 export const sendDbChatMessage = async (message, sessionId = null) => {
-  const response = await dbQueryApi.post('/chat', { 
+  const response = await dbQueryApi.post('/db/chat', { 
     message, 
     session_id: sessionId 
   });

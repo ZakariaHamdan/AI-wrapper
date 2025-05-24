@@ -22,3 +22,37 @@
 2025-05-21 14:24:02,342 - gemini-ai-service - INFO - Server started - Loaded 32 database context files
 2025-05-21 14:24:02,478 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
 2025-05-21 14:24:02,483 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-05-21 14:31:53,080 - gemini-ai-service - INFO - Server started - Loaded 32 database context files
+2025-05-21 14:31:53,385 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-05-21 14:31:53,388 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-05-21 14:31:54,705 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-05-21 14:32:03,098 - gemini-ai-service - INFO - GET /db/status - Status: 200 - 0.07s
+2025-05-21 14:32:27,696 - gemini-ai-service - INFO - POST /files/upload - Status: 200 - 7.68s
+2025-05-21 14:32:44,893 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 3.10s
+2025-05-21 14:32:59,109 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 0.95s
+2025-05-21 14:33:15,139 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 1.51s
+2025-05-21 14:33:25,433 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-05-21 14:33:25,435 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-05-21 14:33:27,297 - gemini-ai-service - INFO - OPTIONS /chat - Status: 200 - 0.00s
+2025-05-21 14:33:27,300 - gemini-ai-service - INFO - POST /chat - Status: 404 - 0.00s
+2025-05-24 14:11:00,491 - gemini-ai-service - INFO - Server started - Loaded 32 database context files
+2025-05-24 14:11:09,842 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 3.50s
+2025-05-24 14:11:32,870 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 1.73s
+2025-05-24 14:11:49,264 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 2.01s
+2025-05-24 14:11:52,235 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 1.06s
+2025-05-24 14:12:12,362 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 3.89s
+2025-05-24 14:12:55,434 - gemini-ai-service - INFO - Server started - Loaded 32 database context files
+2025-05-24 14:13:01,050 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-05-24 14:13:01,055 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-05-24 14:13:11,491 - gemini-ai-service - INFO - OPTIONS /chat - Status: 200 - 0.00s
+2025-05-24 14:13:11,500 - gemini-ai-service - INFO - POST /chat - Status: 404 - 0.00s
+2025-05-24 14:13:26,319 - gemini-ai-service - INFO - POST /chat - Status: 404 - 0.00s
+2025-05-24 14:15:45,899 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 5.34s
+2025-05-24 14:17:22,857 - gemini-ai-service - INFO - POST /chat - Status: 404 - 0.00s
+2025-05-24 14:18:30,789 - gemini-ai-service - INFO - Server started - Loaded 32 database context files
+2025-05-24 14:18:43,318 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-05-24 14:18:43,325 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-05-24 14:21:53,762 - gemini-ai-service - INFO - OPTIONS /db/chat - Status: 200 - 0.00s
+2025-05-24 14:21:57,002 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 3.23s
+2025-05-24 14:22:09,304 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 1.45s
+2025-05-24 14:23:04,275 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 3.67s
