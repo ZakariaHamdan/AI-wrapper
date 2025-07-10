@@ -79,6 +79,7 @@ function FileAnalysisPanel() {
     // Add user message
     setMessages(prev => [...prev, { sender: 'user', content: input }]);
     setLoading(true);
+    setInput('');
     
     try {
       // Call File Analysis API

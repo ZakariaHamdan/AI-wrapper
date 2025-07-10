@@ -1,18 +1,19 @@
-// api.js - Updated to support both services
+// api.js - FIXED with longer timeout for file uploads
 import axios from 'axios';
 
-// Create axios instances for each service
-const dbQueryApi = axios.create({
+// Single backend API instance
+const api = axios.create({
   baseURL: 'http://localhost:8000',
-  timeout: 10000,
+  timeout: 1200000, // 10 seconds for regular requests
   headers: {
     'Content-Type': 'application/json'
   }
 });
 
-const fileAnalysisApi = axios.create({
-  baseURL: 'http://localhost:8001',
-  timeout: 10000,
+// Special instance for file uploads with longer timeout
+const fileApi = axios.create({
+  baseURL: 'http://localhost:8000',
+  timeout: 60000, // 60 seconds for file uploads
   headers: {
     'Content-Type': 'application/json'
   }
@@ -21,20 +22,15 @@ const fileAnalysisApi = axios.create({
 // DB Query API functions
 export const checkDbApiStatus = async () => {
   try {
-    const response = await dbQueryApi.get('/');
+    const response = await api.get('/');
     return response.data;
   } catch (error) {
     throw new Error('Database API unavailable');
   }
 };
 
-export const getDatabaseContext = async () => {
-  const response = await dbQueryApi.get('/context');
-  return response.data;
-};
-
 export const sendDbChatMessage = async (message, sessionId = null) => {
-  const response = await dbQueryApi.post('/db/chat', { 
+  const response = await api.post('/db/chat', { 
     message, 
     session_id: sessionId 
   });
@@ -42,16 +38,16 @@ export const sendDbChatMessage = async (message, sessionId = null) => {
 };
 
 export const clearDbChat = async (sessionId) => {
-  const response = await dbQueryApi.post('/clear', { 
+  const response = await api.post('/db/clear', { 
     session_id: sessionId 
   });
   return response.data;
 };
 
-// File Analysis API functions
+// File Analysis API functions with longer timeout
 export const checkFileApiStatus = async () => {
   try {
-    const response = await fileAnalysisApi.get('/');
+    const response = await api.get('/');
     return response.data;
   } catch (error) {
     throw new Error('File Analysis API unavailable');
@@ -63,9 +59,16 @@ export const uploadAndAnalyzeFile = async (formData, sessionId = null) => {
     formData.append('session_id', sessionId);
   }
   
-  const response = await fileAnalysisApi.post('/upload', formData, {
+  // Use fileApi with longer timeout for uploads
+  const response = await fileApi.post('/files/upload', formData, {
     headers: {
       'Content-Type': 'multipart/form-data'
+    },
+    timeout: 120000, // 2 minutes for large files
+    onUploadProgress: (progressEvent) => {
+      // Optional: Add progress tracking later
+      const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+      console.log(`Upload progress: ${percentCompleted}%`);
     }
   });
   
@@ -73,7 +76,7 @@ export const uploadAndAnalyzeFile = async (formData, sessionId = null) => {
 };
 
 export const sendFileAnalysisMessage = async (message, sessionId) => {
-  const response = await fileAnalysisApi.post('/chat', { 
+  const response = await api.post('/files/chat', { 
     message, 
     session_id: sessionId 
   });
@@ -81,7 +84,7 @@ export const sendFileAnalysisMessage = async (message, sessionId) => {
 };
 
 export const clearFileAnalysisChat = async (sessionId) => {
-  const response = await fileAnalysisApi.post('/clear', { 
+  const response = await api.post('/files/clear', { 
     session_id: sessionId 
   });
   return response.data;

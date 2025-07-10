@@ -1,6 +1,6 @@
 """
 Gemini AI client for interacting with Google's Gemini API.
-Centralizes AI functionality for both database and file analysis.
+IMPROVED VERSION - Simplified prompts for better performance
 """
 from google import genai
 from google.genai import types
@@ -15,7 +15,7 @@ logger = configure_logging(logger_name="gemini-client")
 class GeminiClient:
     """
     Unified Gemini AI client for both database queries and file analysis.
-    Provides methods for creating chat sessions with different system instructions.
+    SIMPLIFIED for better performance and reliability.
     """
     
     def __init__(self, api_key: Optional[str] = None, model_name: Optional[str] = None):
@@ -35,19 +35,11 @@ class GeminiClient:
     def create_chat_session(
         self, 
         system_instruction: str,
-        primer_message: Optional[str] = None,
-        temperature: float = 0.2
+        temperature: float = 0.1  # Lower temperature for more consistent responses
     ):
         """
         Create a new chat session with Gemini
-        
-        Args:
-            system_instruction: The system instruction to initialize the model
-            primer_message: Optional message to prime the session
-            temperature: Temperature for generation (0.0 to 1.0)
-            
-        Returns:
-            Chat session object
+        SIMPLIFIED - No primer messages to reduce API calls
         """
         try:
             chat = self.client.chats.create(
@@ -58,13 +50,6 @@ class GeminiClient:
                 )
             )
             
-            # Prime the session if provided
-            if primer_message:
-                try:
-                    chat.send_message(primer_message)
-                except Exception as e:
-                    logger.warning(f"Error priming chat session: {str(e)}")
-            
             return chat
         except Exception as e:
             logger.error(f"Error creating chat session: {str(e)}")
@@ -73,94 +58,119 @@ class GeminiClient:
     def create_db_chat_session(self, context: str):
         """
         Create a chat session for database queries
-        
-        Args:
-            context: Database schema information
-            
-        Returns:
-            Configured chat session
+        SQL SERVER SPECIFIC system instruction
         """
-        system_instruction = self._get_db_system_instruction(context)
-        primer_message = (
-            "You will be helping users query a SQL Server database. "
-            "Remember to ALWAYS generate SQL queries for any data-related questions, "
-            "use HTML formatting for readable responses, and provide concise analysis of results."
-        )
+        system_instruction = f"""You are PHD, a helpful SQL SERVER database assistant. 
+
+Database schema:
+{context}
+
+CRITICAL:When querying the EmployeeAttendance table always add the restriction to it that is ProjectId=64
+
+IMPORTANT: Always generate Microsoft SQL Server compatible syntax:
+- Use square brackets [TableName] for table/column names with spaces or reserved words
+- Use TOP instead of LIMIT
+- Use GETDATE() for current date/time
+- Use LEN() instead of LENGTH()
+- Use CHARINDEX() instead of LOCATE()
+- Use ISNULL() for null handling
+- When getting table names only use those table names :AggregatedCounter
+                                                       Attedance1TO16MayBackup
+                                                       AttendanceDevices
+                                                       AttendanceExceptionBackup
+                                                       AttendanceExceptionRequests
+                                                       AttendanceExceptionTypes
+                                                       AttendanceScheduleHolidays
+                                                       AttendanceScheduleOverrides
+                                                       AttendanceSchedules
+                                                       ChangeReqBackup880040
+                                                       ChangeRequestBackup
+                                                       ChangeRequestTypes
+                                                       Companies
+                                                       CompanyPositionContracts
+                                                       CompanyTypes
+                                                       ContractorTypes
+                                                       Counter
+                                                       Countries
+                                                       DailyAttendanceExceptions
+                                                       DailyAttendanceResetHistory
+                                                       EmployeeAttendance
+                                                       EmployeeAttendanceLogs
+                                                       EmployeeAttendanceLogsArchive
+                                                       EmployeeAttendanceTemp
+                                                       EmployeeCountries
+                                                       EmployeePermanentExceptions
+                                                       EmployeeProjects
+                                                       EmployeePunchedProject
+                                                       Employees
+                                                       EmployeeScheduleOverrides
+                                                       Hash
+                                                       Import22Feb10
+                                                       Import22Feb13
+                                                       Import22Feb16
+                                                       Import22Feb166
+                                                       Import22Feb17
+                                                       Import22Feb19
+                                                       Import22Feb20
+                                                       Import22Mar1
+                                                       Import22Mar2
+                                                       Import22Mars3
+                                                       Import22Master
+                                                       Job
+                                                       JobParameter
+                                                       JobPositions
+                                                       JobQueue
+                                                       JobSpecifications
+                                                       LeaveRequestApprovals
+                                                       LeaveRequests
+                                                       LeaveTypes
+                                                       List
+                                                       MainContractors
+                                                       PayrollPeriods
+                                                       PositionCategories
+                                                       Project
+                                                       projectbackup
+                                                       ProjectCompanies
+                                                       ProjectDevices
+                                                       PublicHolidays
+                                                       Regions
+                                                       Roles
+                                                       Schema
+                                                       Server
+                                                       Set
+                                                       State
+                                                       sysdiagrams
+                                                       TempApprovalRedirects
+                                                       tempAtt20Nov
+                                                       TransactionStatuses
+                                                       UpdateEmployees2822
+                                                       UserClaims
+                                                       UserLogins
+                                                       UserRoles
+                                                       Users
+
+
+Rules:
+1. For data questions, generate SQL queries in ```sql``` blocks
+2. Use HTML formatting: <b>, <ul>, <li>, <p> tags
+3. Be concise and helpful
+4. To get the table name for each table you can find them in BiovisionDbContext for example: public DbSet<Employee> Employees means entity Employee has table called Employees and public DbSet<EmployeeAttendance> EmployeeAttendance, entity EmployeeAttendance has table called EmployeeAttendance."""
         
-        return self.create_chat_session(system_instruction, primer_message)
+        return self.create_chat_session(system_instruction)
     
     def create_file_analysis_session(self):
         """
         Create a chat session for file analysis
-        
-        Returns:
-            Configured chat session
+        SIMPLIFIED system instruction
         """
-        system_instruction = self._get_file_analysis_system_instruction()
-        primer_message = (
-            "You will be helping users analyze and understand Excel and CSV files. "
-            "Focus on extracting insights, explaining patterns, and providing clear explanations of the data."
-        )
+        system_instruction = """You are a data analysis assistant.
+
+Help users understand their Excel/CSV files by:
+1. Explaining patterns and insights
+2. Providing statistical summaries
+3. Suggesting visualizations
+4. Using HTML formatting: <b>, <ul>, <li>, <p> tags
+
+Be concise and focus on actionable insights."""
         
-        return self.create_chat_session(system_instruction, primer_message)
-    
-    def _get_db_system_instruction(self, context: str) -> str:
-        """Create system instruction for the database query service"""
-        return f"""
-        You are a helpful AI assistant that specializes in database interactions using SQL Server.
-        You're providing assistance through a web application that allows users to query the database.
-        
-        CRITICAL INSTRUCTION: When the user asks ANY question about data, users, records, or information 
-        that would be stored in a database, you MUST ALWAYS generate an SQL query to retrieve that information. 
-        DO NOT say that you cannot query the database - you CAN and SHOULD generate SQL queries for any data-related question.
-        
-        You have access to the following context files that define the application's data structure:
-        {context}
-        
-        When asked about ANY data that might be in the database, ALWAYS:
-        1. Generate an appropriate SQL query to answer the question
-        2. Format the SQL query in a code block with ```sql tags
-        3. The query will be executed automatically and results will be provided to you
-        4. Then analyze the results and provide a clear, concise answer
-        5. Keep in mind table names in the database should match the model class names
-        
-        RESPONSE FORMATTING INSTRUCTIONS:
-        - Use HTML formatting in your responses for better readability in the web interface
-        - Use <strong> or <b> tags for emphasis and important information
-        - Use <ul> and <li> tags for lists
-        - Use <p> tags for paragraphs
-        - Include a concise summary at the beginning of your analysis
-        - Use appropriate headings with <h4> tags for different sections
-        - When presenting numerical results, consider using phrases like "There are X records" or "Found X matches"
-        - Keep your responses concise and focused
-        """
-    
-    def _get_file_analysis_system_instruction(self) -> str:
-        """Create system instruction for file analysis service"""
-        return """
-        You are a helpful AI assistant that specializes in analyzing and explaining data from Excel and CSV files.
-        
-        Focus on:
-        1. Understanding data patterns and trends
-        2. Providing clear statistical insights
-        3. Explaining relationships between variables
-        4. Helping users understand their data through clear explanations
-        5. Suggesting visualizations that would be appropriate for the data
-        
-        When analyzing data, always:
-        1. Start with an overview of what you see in the data
-        2. Point out any interesting patterns, outliers, or anomalies
-        3. Suggest possible interpretations or conclusions
-        4. Answer the user's specific questions about their data
-        5. When appropriate, suggest further analyses that could provide more insights
-        
-        RESPONSE FORMATTING INSTRUCTIONS:
-        - Use HTML formatting in your responses for better readability in the web interface
-        - Use <strong> or <b> tags for emphasis and important information
-        - Use <ul> and <li> tags for lists
-        - Use <p> tags for paragraphs
-        - Include a concise summary at the beginning of your analysis
-        - Use appropriate headings with <h4> tags for different sections
-        
-        Remember: You are analyzing a file, NOT querying a database. Do not generate SQL code.
-        """
+        return self.create_chat_session(system_instruction)

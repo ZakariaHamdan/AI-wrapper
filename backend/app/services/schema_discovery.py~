@@ -1,0 +1,135 @@
+"""
+Schema discovery service for auto-discovering database schema.
+"""
+from typing import Optional, Tuple
+from app.services.db_service import execute_sql_query
+from app.core.logging import configure_logging
+
+# Configure logging
+logger = configure_logging(logger_name="schema-discovery")
+
+def discover_database_schema() -> Tuple[Optional[str], Optional[str]]:
+    """
+    Auto-discover database schema by querying system tables
+    
+    Returns:
+        Tuple of (schema_context, error_message)
+    """
+
+    # SQL query to get all table and column information - SQL SERVER specific
+    discovery_query = """
+    SELECT 
+        c.TABLE_SCHEMA,
+        c.TABLE_NAME,
+        c.COLUMN_NAME,
+        c.DATA_TYPE,
+        c.IS_NULLABLE,
+        c.CHARACTER_MAXIMUM_LENGTH,
+        c.NUMERIC_PRECISION,
+        c.NUMERIC_SCALE,
+        c.COLUMN_DEFAULT
+    FROM INFORMATION_SCHEMA.COLUMNS c
+    INNER JOIN INFORMATION_SCHEMA.TABLES t 
+        ON c.TABLE_SCHEMA = t.TABLE_SCHEMA 
+        AND c.TABLE_NAME = t.TABLE_NAME
+    WHERE t.TABLE_TYPE = 'BASE TABLE'
+    ORDER BY c.TABLE_SCHEMA, c.TABLE_NAME, c.ORDINAL_POSITION
+    """
+
+    try:
+        logger.info("Starting database schema discovery...")
+
+        # Execute the discovery query
+        result, error = execute_sql_query(discovery_query)
+
+        if error:
+            logger.error(f"Schema discovery failed: {error}")
+            return None, f"Failed to discover schema: {error}"
+
+        if not result or not result["table"]:
+            logger.error("No schema data returned")
+            return None, "No schema information found in database"
+
+        # Format the results into a readable context
+        schema_context = format_schema_context(result["table"])
+
+        logger.info(f"Schema discovery completed successfully - Found {len(result['table'].rows)} columns")
+        return schema_context, None
+
+    except Exception as e:
+        error_msg = f"Schema discovery exception: {str(e)}"
+        logger.error(error_msg)
+        return None, error_msg
+
+def format_schema_context(table_data) -> str:
+    """
+    Format the raw schema data into a readable context string for Gemini
+    
+    Args:
+        table_data: TableData object with schema information
+        
+    Returns:
+        Formatted schema context string
+    """
+
+    # Group columns by table
+    tables = {}
+
+    for row in table_data.rows:
+        schema_name = row[0]
+        table_name = row[1]
+        column_name = row[2]
+        data_type = row[3]
+        is_nullable = row[4]
+        max_length = row[5]
+        precision = row[6]
+        scale = row[7]
+        default_value = row[8]
+
+        # Create full table name
+        full_table_name = f"{schema_name}.{table_name}"
+
+        if full_table_name not in tables:
+            tables[full_table_name] = []
+
+        # Format column info
+        column_info = f"  {column_name} {data_type}"
+
+        # Add length/precision info
+        if max_length and data_type.lower() in ['varchar', 'nvarchar', 'char', 'nchar']:
+            column_info += f"({max_length})"
+        elif precision and data_type.lower() in ['decimal', 'numeric']:
+            if scale:
+                column_info += f"({precision},{scale})"
+            else:
+                column_info += f"({precision})"
+
+        # Add nullable info
+        if is_nullable == "NO":
+            column_info += " NOT NULL"
+        else:
+            column_info += " NULL"
+
+        # Add default value if exists
+        if default_value:
+            column_info += f" DEFAULT {default_value}"
+
+        tables[full_table_name].append(column_info)
+
+    # Build the formatted context
+    context_lines = [
+        "DATABASE SCHEMA INFORMATION:",
+        "=" * 50,
+        ""
+    ]
+
+    for table_name, columns in sorted(tables.items()):
+        context_lines.append(f"Table: {table_name}")
+        context_lines.append("-" * (len(table_name) + 7))
+        context_lines.extend(columns)
+        context_lines.append("")
+
+    context_lines.append(f"Total Tables: {len(tables)}")
+    context_lines.append(f"Total Columns: {sum(len(cols) for cols in tables.values())}")
+
+    return "\n".join(context_lines)

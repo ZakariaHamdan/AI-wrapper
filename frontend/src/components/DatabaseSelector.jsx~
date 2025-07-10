@@ -1,0 +1,115 @@
+// DatabaseSelector.jsx
+import React, { useState } from 'react';
+
+const DatabaseSelector = ({ onDatabaseChange, currentDatabase, showNotification }) => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [selectedDb, setSelectedDb] = useState(currentDatabase || 'pa');
+
+    const databases = [
+        { value: 'pa', label: 'Biovision MBL L01' },
+        { value: 'erp_mbl', label: 'Daleel MBL L01' },
+        { value: 'erp_icad', label: 'Daleel ICAD' }
+    ];
+
+    const handleDatabaseChange = async (event) => {
+        const newDatabase = event.target.value;
+        setIsLoading(true);
+
+        try {
+            const response = await fetch('http://localhost:8000/db/switch-database', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ database: newDatabase })
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.status === 'success') {
+                setSelectedDb(newDatabase);
+
+                // Get database label for notifications
+                const dbInfo = databases.find(db => db.value === newDatabase);
+                const dbLabel = dbInfo ? dbInfo.label : newDatabase.toUpperCase();
+
+                // Show success notification
+                if (showNotification) {
+                    showNotification({
+                        type: 'success',
+                        title: 'Database Switched Successfully!',
+                        message: `Connected to ${dbLabel} database. You can start asking questions about this database.`,
+                        duration: 4000
+                    });
+                }
+
+                if (onDatabaseChange) {
+                    onDatabaseChange(newDatabase, result);
+                }
+
+                console.log(`Switched to database: ${result.database}`);
+            } else {
+                console.error('Database switch failed:', result.message);
+
+                // Show error notification
+                if (showNotification) {
+                    showNotification({
+                        type: 'error',
+                        title: 'Database Switch Failed',
+                        message: result.message || 'Failed to switch database. Please try again.',
+                        duration: 5000
+                    });
+                }
+
+                // Reset selection
+                setSelectedDb(currentDatabase);
+            }
+        } catch (error) {
+            console.error('Error switching database:', error);
+
+            // Show error notification
+            if (showNotification) {
+                showNotification({
+                    type: 'error',
+                    title: 'Connection Error',
+                    message: 'Unable to connect to the server. Please check your connection and try again.',
+                    duration: 5000
+                });
+            }
+
+            // Reset selection
+            setSelectedDb(currentDatabase);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    return (
+        <div className="flex items-center space-x-2">
+            <label htmlFor="database-select" className="text-sm text-gray-300 font-medium">
+                Database:
+            </label>
+            <select
+                id="database-select"
+                value={selectedDb}
+                onChange={handleDatabaseChange}
+                disabled={isLoading}
+                className="bg-gray-700 text-white border border-gray-600 rounded-md px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+                {databases.map((db) => (
+                    <option key={db.value} value={db.value} className="bg-gray-700">
+                        {db.label}
+                    </option>
+                ))}
+            </select>
+            {isLoading && (
+                <div className="flex items-center space-x-1">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
+                    <span className="text-xs text-gray-400 italic">Switching...</span>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default DatabaseSelector;

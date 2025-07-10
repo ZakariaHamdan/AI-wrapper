@@ -1,9 +1,17 @@
 """
 API request and response models.
 Uses Pydantic for validation.
+UPDATED: Added structured table data support
 """
 from pydantic import BaseModel
 from typing import Optional, List, Dict, Any, Union
+
+# Table data structure
+class TableData(BaseModel):
+    """Structured table data for SQL results"""
+    headers: List[str]
+    rows: List[List[Any]]
+    row_count: int
 
 # Common models
 class SessionRequest(BaseModel):
@@ -20,13 +28,15 @@ class ClearRequest(SessionRequest):
 
 # Response models
 class ChatResponse(BaseModel):
-    """Base chat response model"""
+    """Base chat response model - UPDATED with structured table data"""
     response: str
     session_id: str
     has_sql: bool = False
     sql_query: Optional[str] = None
-    sql_result: Optional[str] = None
+    sql_result: Optional[str] = None  # Keep for backward compatibility
+    sql_table: Optional[TableData] = None  # NEW: Structured table data
     sql_error: Optional[str] = None
+    user_question: Optional[str] = None
     interpretation: Optional[str] = None
 
 class FileInfo(BaseModel):
