@@ -721,3 +721,81 @@
 2025-07-10 11:23:21,903 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 7.18s
 2025-07-10 11:23:35,496 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 10.47s
 2025-07-10 11:26:33,051 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 7.22s
+2025-07-10 11:36:23,389 - gemini-ai-service - INFO - Server started - Auto-discovered schema for database: pa
+2025-07-10 11:36:23,543 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-07-10 11:36:23,547 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-07-10 11:36:23,549 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.01s
+2025-07-10 11:36:23,550 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.01s
+2025-07-10 11:36:31,963 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.00s
+2025-07-10 11:36:31,971 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-07-10 11:36:31,975 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-07-10 11:36:31,978 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.00s
+2025-07-10 11:36:34,092 - gemini-ai-service - INFO - OPTIONS /db/chat - Status: 200 - 0.00s
+2025-07-10 11:36:43,983 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 9.88s
+2025-07-10 11:37:17,802 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 33.10s
+2025-07-10 11:37:24,337 - gemini-ai-service - INFO - OPTIONS /db/switch-database - Status: 200 - 0.00s
+2025-07-10 11:37:26,883 - gemini-ai-service - INFO - POST /db/switch-database - Status: 200 - 2.53s
+2025-07-10 11:38:16,935 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 30.84s
+2025-07-10 11:42:29,944 - gemini-ai-service - INFO - Server started - Auto-discovered schema for database: pa
+2025-07-10 11:42:41,829 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.00s
+2025-07-10 11:42:41,830 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-07-10 11:42:41,833 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-07-10 11:42:41,858 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.00s
+2025-07-10 11:43:08,389 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 10.06s
+2025-07-10 11:43:34,811 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 18.02s
+2025-07-10 11:44:18,712 - gemini-ai-service - INFO - Server started - Auto-discovered schema for database: pa
+2025-07-10 11:44:46,712 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 27.89s
+2025-07-10 11:45:26,123 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 21.34s
+2025-07-10 11:45:57,633 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 29.93s
+2025-07-10 11:49:54,720 - gemini-ai-service - INFO - OPTIONS /db/switch-database - Status: 200 - 0.00s
+2025-07-10 11:49:57,193 - gemini-ai-service - INFO - POST /db/switch-database - Status: 200 - 2.46s
+2025-07-10 12:07:15,733 - gemini-ai-service - INFO - Server started - Auto-discovered schema for database: pa
+2025-07-10 12:07:16,122 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-07-10 12:17:43,983 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.00s
+2025-07-10 12:17:44,029 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-07-10 12:17:44,035 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.00s
+2025-07-10 12:17:44,040 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-07-10 12:21:43,635 - gemini-ai-service - INFO - Server started - Auto-discovered schema for database: pa
+2025-07-10 12:21:43,999 - gemini-ai-service - INFO - GET / - Status: 200 - 0.00s
+2025-07-10 12:21:44,005 - gemini-ai-service - INFO - GET / - Status: 200 - 0.01s
+2025-07-10 12:21:44,008 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.01s
+2025-07-10 12:21:44,009 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.01s
+2025-07-10 12:21:47,920 - gemini-ai-service - INFO - OPTIONS /db/switch-database - Status: 200 - 0.00s
+2025-07-10 12:21:49,834 - gemini-ai-service - INFO - POST /db/switch-database - Status: 200 - 1.90s
+2025-07-10 12:22:05,053 - gemini-ai-service - INFO - OPTIONS /db/chat - Status: 200 - 0.00s
+2025-07-10 12:22:32,360 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 27.30s
+2025-07-10 12:23:36,922 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 20.26s
+2025-07-10 12:24:26,836 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 34.27s
+2025-07-10 12:27:40,856 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 48.24s
+2025-07-10 12:49:42,887 - gemini-ai-service - INFO - OPTIONS /db/chat - Status: 200 - 0.00s
+2025-07-10 12:50:34,065 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 51.17s
+2025-07-10 12:53:11,225 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 62.15s
+2025-07-10 17:32:27,407 - gemini-ai-service - INFO - Server started - Auto-discovered schema for database: pa
+2025-07-10 17:32:28,149 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.00s
+2025-07-10 17:32:29,637 - gemini-ai-service - INFO - OPTIONS /db/chat - Status: 200 - 0.00s
+2025-07-10 17:32:58,843 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 29.19s
+2025-07-17 15:11:55,892 - gemini-ai-service - INFO - Server started - Auto-discovered schema for database: pa
+2025-07-17 15:11:57,736 - gemini-ai-service - INFO - GET /db/current-database - Status: 200 - 0.00s
+2025-07-17 15:12:14,430 - gemini-ai-service - INFO - OPTIONS /db/switch-database - Status: 200 - 0.00s
+2025-07-17 15:12:18,421 - gemini-ai-service - INFO - POST /db/switch-database - Status: 200 - 3.97s
+2025-07-17 15:12:20,871 - gemini-ai-service - INFO - OPTIONS /db/chat - Status: 200 - 0.00s
+2025-07-17 15:12:34,791 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 13.91s
+2025-07-17 15:13:18,104 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 27.39s
+2025-07-17 15:20:22,988 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 70.37s
+2025-07-22 13:48:05,953 - gemini-ai-service - WARNING - Schema auto-discovery failed: Failed to discover schema: Database connection timed out. The server may be unavailable.
+2025-07-22 13:48:05,965 - gemini-ai-service - INFO - Falling back to loading context files...
+2025-07-22 13:48:05,965 - gemini-ai-service - INFO - Server started - Loaded 0 database context files (fallback)
+2025-07-22 13:49:16,256 - gemini-ai-service - INFO - OPTIONS /db/chat - Status: 200 - 0.00s
+2025-07-22 13:49:38,403 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 22.13s
+2025-07-22 13:50:54,119 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 23.15s
+2025-07-22 13:51:00,693 - gemini-ai-service - INFO - OPTIONS /db/switch-database - Status: 200 - 0.00s
+2025-07-22 13:51:03,066 - gemini-ai-service - INFO - POST /db/switch-database - Status: 200 - 2.37s
+2025-07-22 13:51:34,876 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 25.53s
+2025-07-22 13:53:07,631 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 30.77s
+2025-07-22 13:55:23,954 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 28.76s
+2025-07-22 13:55:34,166 - gemini-ai-service - INFO - POST /db/switch-database - Status: 200 - 2.43s
+2025-07-22 13:56:24,896 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 35.24s
+2025-07-22 13:58:04,387 - gemini-ai-service - INFO - POST /db/chat - Status: 200 - 46.41s
+2025-07-22 16:29:46,131 - gemini-ai-service - WARNING - Schema auto-discovery failed: Failed to discover schema: Database connection timed out. The server may be unavailable.
+2025-07-22 16:29:46,191 - gemini-ai-service - INFO - Falling back to loading context files...
+2025-07-22 16:29:46,220 - gemini-ai-service - INFO - Server started - Loaded 0 database context files (fallback)

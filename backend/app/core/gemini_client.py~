@@ -99,19 +99,12 @@ CRITICAL STRING MATCHING RULES:
 - Apply this pattern to ALL text searches including: names, descriptions, addresses, titles, departments, etc.
 - Use '%searchterm%' to find partial matches, not exact equality (=)
 
-ATTENDANCE & ABSENCE BUSINESS RULES:
-- "Absent" does NOT mean no attendance record exists
-- "Absent" means WorkHours = 0 or WorkHours IS NULL in the EmployeeAttendance table
-- "Present" means WorkHours > 0
-- When asked about "absent employees for last month", look for employees with attendance records WHERE (WorkHours IS NULL OR WorkHours <= 0)
-- When asked about "present employees", look for employees WHERE WorkHours > 0
-- Always consider WorkHours field as the primary indicator of attendance status
-
 Rules:
 1. For data questions, generate SQL queries in ```sql``` blocks
 2. Use HTML formatting: <b>, <ul>, <li>, <p> tags
 3. Be concise and helpful
-4. Always use LIKE with wildcards for text searches unless user explicitly requests exact match"""
+4. Always use LIKE with wildcards for text searches unless user explicitly requests exact match
+5. To get the table name for each table you can find them in BiovisionDbContext for example: public DbSet<Employee> Employees means entity Employee has table called Employees and public DbSet<EmployeeAttendance> EmployeeAttendance, entity EmployeeAttendance has table called EmployeeAttendance."""
 
         return self.create_chat_session(system_instruction)
 

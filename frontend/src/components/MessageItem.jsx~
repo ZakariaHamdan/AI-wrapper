@@ -1,10 +1,12 @@
+// MessageItem.jsx
 import React from 'react';
 import { jsPDF } from 'jspdf';
 import { autoTable } from 'jspdf-autotable';
 
 function MessageItem({ message }) {
-  const { sender, content, sqlQuery, sqlResult, sqlTable, sqlError, fileInfo } = message;
-  
+  const { sender, content, sqlQuery, sqlResult, sqlTable, sqlError, fileInfo, userQuestion } = message;
+
+  // PDF Export Function - Uses user question instead of SQL query
   const exportToPDF = () => {
     if (!sqlTable || !sqlTable.headers || !sqlTable.rows) {
       alert('No table data available to export');
@@ -17,22 +19,23 @@ function MessageItem({ message }) {
 
       // Add title
       doc.setFontSize(16);
-      doc.text('SQL Query Results', 14, 15);
+      doc.text('Database Query Results', 14, 15);
 
-      // Add query if available
-      if (sqlQuery) {
+      // Add user question instead of SQL query
+      if (userQuestion) {
+        doc.setFontSize(12);
+        doc.text('Question:', 14, 25);
+
+        // Split long question into multiple lines
+        const questionLines = doc.splitTextToSize(userQuestion, 180);
         doc.setFontSize(10);
-        doc.text('Query:', 14, 25);
+        doc.text(questionLines, 14, 32);
 
-        // Split long query into multiple lines
-        const queryLines = doc.splitTextToSize(sqlQuery, 180);
-        doc.text(queryLines, 14, 30);
+        // Calculate Y position for table based on question length
+        const tableStartY = 32 + (questionLines.length * 4) + 15;
 
-        // Calculate Y position for table based on query length
-        const tableStartY = 30 + (queryLines.length * 4) + 10;
-
-        // Add table using autoTable function (not doc.autoTable)
-        autoTable(doc, {  // ← Use autoTable(doc, {...}) instead of doc.autoTable({...})
+        // Add table
+        autoTable(doc, {
           head: [sqlTable.headers],
           body: sqlTable.rows,
           startY: tableStartY,
@@ -51,11 +54,11 @@ function MessageItem({ message }) {
           margin: { top: 10, right: 14, bottom: 10, left: 14 },
         });
       } else {
-        // No query, start table higher
-        autoTable(doc, {  // ← Use autoTable(doc, {...}) instead of doc.autoTable({...})
+        // No question, start table higher
+        autoTable(doc, {
           head: [sqlTable.headers],
           body: sqlTable.rows,
-          startY: 25,
+          startY: 30,
           styles: {
             fontSize: 8,
             cellPadding: 3,
@@ -89,9 +92,12 @@ function MessageItem({ message }) {
         );
       }
 
-      // Generate filename with timestamp
+      // Generate filename with timestamp and question context
       const timestamp = new Date().toISOString().slice(0, 19).replace(/[:]/g, '-');
-      const filename = `sql-results-${timestamp}.pdf`;
+      const questionContext = userQuestion
+          ? userQuestion.slice(0, 30).replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()
+          : 'database-results';
+      const filename = `${questionContext}-${timestamp}.pdf`;
 
       // Save the PDF
       doc.save(filename);
@@ -167,7 +173,7 @@ function MessageItem({ message }) {
       processedContent = processedContent.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
       processedContent = processedContent.replace(/\*(.*?)\*/g, '<em>$1</em>');
       processedContent = processedContent.replace(/\n/g, '<br>');
-      processedContent = processedContent.replace(/^[•\-*]\s(.+)$/gm, '<li>$1</li>');
+      processedContent = processedContent.replace(/^[•\-\*]\s(.+)$/gm, '<li>$1</li>');
       processedContent = processedContent.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
       processedContent = processedContent.replace(/<\/ul>\s*<ul>/g, '');
 
@@ -183,12 +189,24 @@ function MessageItem({ message }) {
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100'
           }`}
       >
-        {/* SQL Query */}
-        {sqlQuery && (
+        {/* User Question - Show instead of SQL Query */}
+        {userQuestion && (
             <div className="mb-3">
-              <h4 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1">SQL Query</h4>
-              <pre className="bg-gray-200 dark:bg-gray-700 p-2 rounded text-sm overflow-x-auto">{sqlQuery}</pre>
+              <h4 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1">Question</h4>
+              <div className="bg-blue-50 dark:bg-blue-900/30 p-3 rounded text-sm font-medium">
+                {userQuestion}
+              </div>
             </div>
+        )}
+
+        {/* SQL Query - Optional: Comment out to hide completely */}
+        {sqlQuery && (
+            <details className="mb-3">
+              <summary className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1 cursor-pointer hover:text-gray-700 dark:hover:text-gray-200">
+                SQL Query (Click to expand)
+              </summary>
+              <pre className="bg-gray-200 dark:bg-gray-700 p-2 rounded text-sm overflow-x-auto mt-2">{sqlQuery}</pre>
+            </details>
         )}
 
         {/* SQL Error */}

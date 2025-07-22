@@ -1,5 +1,6 @@
 """
 Database switching API routes.
+UPDATED: Properly handles session clearing with database context
 """
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
@@ -27,6 +28,7 @@ class DatabaseSwitchResponse(BaseModel):
 async def switch_database(request: Request, switch_request: DatabaseSwitchRequest):
     """
     Switch to a different database and clear all sessions
+    UPDATED: Passes database context when clearing sessions
     
     Args:
         request: FastAPI request object
@@ -42,7 +44,7 @@ async def switch_database(request: Request, switch_request: DatabaseSwitchReques
         # Import here to avoid circular imports
         from app.services.schema_discovery import discover_database_schema_with_connection
         from app.services.ai_service import clear_all_sessions
-        from app.services.db_service import set_connection_string  # ← ADD THIS IMPORT
+        from app.services.db_service import set_connection_string
 
         # Build new connection string
         settings = get_settings()
@@ -53,11 +55,7 @@ async def switch_database(request: Request, switch_request: DatabaseSwitchReques
 
         logger.info(f"Built connection string for database: {database_name}")
 
-        # Clear all existing chat sessions
-        cleared_count = clear_all_sessions()
-        logger.info(f"Cleared {cleared_count} chat sessions")
-
-        # Discover schema with new connection
+        # Discover schema with new connection first (to validate connection)
         schema_context, error = discover_database_schema_with_connection(new_connection_string)
 
         if error:
@@ -68,23 +66,34 @@ async def switch_database(request: Request, switch_request: DatabaseSwitchReques
                 message=f"Failed to connect to database '{database_name}': {error}"
             )
 
-        # ← ADD THIS LINE: Update the global connection string in db_service
-        set_connection_string(new_connection_string)
-
-        # Update app state
+        # Update app state FIRST (before clearing sessions)
         request.app.state.db_context = schema_context
         request.app.state.current_database = database_name
         request.app.state.current_connection_string = new_connection_string
 
+        # Update the global connection string in db_service
+        set_connection_string(new_connection_string)
+
+        # Clear all existing chat sessions AFTER updating app state
+        # This ensures any new sessions created will use the new database context
+        cleared_count = clear_all_sessions()
+        logger.info(f"Cleared {cleared_count} chat sessions for database switch to: {database_name}")
+
         # Create preview of schema (first 500 chars)
         schema_preview = schema_context[:500] + "..." if len(schema_context) > 500 else schema_context
+
+        # Log database-specific rules
+        if database_name.lower() in ['pa', 'erp_mbl']:
+            logger.info(f"Database {database_name}: ProjectId=64 filter will be applied to EmployeeAttendance queries")
+        else:
+            logger.info(f"Database {database_name}: No ProjectId filter will be applied to EmployeeAttendance queries")
 
         logger.info(f"Successfully switched to database: {database_name}")
 
         return DatabaseSwitchResponse(
             status="success",
             database=database_name,
-            message=f"Successfully switched to database '{database_name}'",
+            message=f"Successfully switched to database '{database_name}'. All sessions cleared and database-specific rules applied.",
             schema_preview=schema_preview
         )
 
@@ -95,6 +104,17 @@ async def switch_database(request: Request, switch_request: DatabaseSwitchReques
 
 @router.get("/current-database")
 async def get_current_database(request: Request):
-    """Get currently selected database"""
+    """Get currently selected database with rule information"""
     current_db = getattr(request.app.state, 'current_database', 'pa')  # Default to 'pa'
-    return {"current_database": current_db}
+
+    # Add database-specific rule information
+    if current_db.lower() in ['pa', 'erp_mbl']:
+        filter_info = "ProjectId=64 filter applied to EmployeeAttendance"
+    else:
+        filter_info = "No ProjectId filter applied"
+
+    return {
+        "current_database": current_db,
+        "filter_rules": filter_info,
+        "like_matching": "Enabled for all text searches"
+    }

@@ -1,6 +1,6 @@
 """
 AI service for handling both database queries and file analysis.
-FIXED: User question parameter properly passed
+UPDATED: Added database-specific session creation
 """
 import re
 import uuid
@@ -20,73 +20,91 @@ _chat_sessions = {}
 # Initialize Gemini client
 gemini_client = GeminiClient()
 
-# Session management functions (unchanged)
-def get_or_create_db_session(session_id: Optional[str], context: str) -> tuple:
-    """Get existing or create new database chat session"""
+# Session management functions
+def get_or_create_db_session(session_id: Optional[str], context: str, database_name: str = "pa") -> tuple:
+    """
+    Get existing or create new database chat session
+    UPDATED: Now accepts database_name parameter
+    """
     if not session_id or session_id not in _chat_sessions:
         session_id = str(uuid.uuid4())
-        
+
         _chat_sessions[session_id] = {
             "type": "db_query",
-            "chat": gemini_client.create_db_chat_session(context)
+            "database": database_name,
+            "chat": gemini_client.create_db_chat_session(context, database_name)
         }
-        logger.info(f"Created new database chat session: {session_id[:8]}...")
-    
+        logger.info(f"Created new database chat session: {session_id[:8]}... for database: {database_name}")
+    else:
+        # Check if database has changed and recreate session if needed
+        existing_session = _chat_sessions[session_id]
+        if existing_session.get("database") != database_name:
+            logger.info(f"Database changed from {existing_session.get('database')} to {database_name}, recreating session")
+            _chat_sessions[session_id] = {
+                "type": "db_query",
+                "database": database_name,
+                "chat": gemini_client.create_db_chat_session(context, database_name)
+            }
+
     return session_id, _chat_sessions[session_id]["chat"]
 
 def get_or_create_file_session(session_id: Optional[str]) -> tuple:
     """Get existing or create new file analysis chat session"""
     if not session_id or session_id not in _chat_sessions:
         session_id = str(uuid.uuid4())
-        
+
         _chat_sessions[session_id] = {
             "type": "file_analysis",
             "chat": gemini_client.create_file_analysis_session()
         }
         logger.info(f"Created new file analysis session: {session_id[:8]}...")
-    
+
     return session_id, _chat_sessions[session_id]["chat"]
 
-def clear_session(session_id: str) -> bool:
-    """Clear a chat session"""
+def clear_session(session_id: str, database_name: str = "pa") -> bool:
+    """
+    Clear a chat session
+    UPDATED: Now accepts database_name parameter for proper recreation
+    """
     if session_id in _chat_sessions:
         session_type = _chat_sessions[session_id]["type"]
-        
+
         if session_type == "db_query":
-            # Reset with clean context
-            _chat_sessions[session_id]["chat"] = gemini_client.create_db_chat_session("[Context has been reset]")
+            # Reset with clean context and current database
+            _chat_sessions[session_id]["chat"] = gemini_client.create_db_chat_session("[Context has been reset]", database_name)
+            _chat_sessions[session_id]["database"] = database_name
         else:
             _chat_sessions[session_id]["chat"] = gemini_client.create_file_analysis_session()
-        
-        logger.info(f"Cleared chat session: {session_id[:8]}...")
+
+        logger.info(f"Cleared chat session: {session_id[:8]}... for database: {database_name}")
         return True
-    
+
     logger.warning(f"Session not found for clearing: {session_id[:8]}...")
     return False
 
-def process_db_message(message: str, session_id: Optional[str], context: str) -> ChatResponse:
+def process_db_message(message: str, session_id: Optional[str], context: str, database_name: str = "pa") -> ChatResponse:
     """
     Process a chat message for database queries
-    FIXED: Properly passes user_question to helper functions
+    UPDATED: Now accepts database_name parameter
     """
-    # Get or create session
-    session_id, chat = get_or_create_db_session(session_id, context)
-    
+    # Get or create session with database-specific instructions
+    session_id, chat = get_or_create_db_session(session_id, context, database_name)
+
     # Handle direct SQL queries
     if message.strip().lower().startswith("select "):
-        return _execute_direct_sql(message, session_id, chat, message)  # ← FIXED: Pass message as user_question
-    
+        return _execute_direct_sql(message, session_id, chat, message)
+
     # Regular chat message - let Gemini decide if SQL is needed
     try:
         response = chat.send_message(message)
         response_text = response.text
-        
+
         # Check if Gemini generated SQL
         sql_matches = re.findall(r"```sql\s*(.*?)\s*```", response_text, re.DOTALL)
-        
+
         if sql_matches:
             sql_query = sql_matches[0].strip()
-            return _execute_generated_sql(sql_query, session_id, chat, message)  # ← FIXED: Pass message as user_question
+            return _execute_generated_sql(sql_query, session_id, chat, message)
         else:
             # No SQL needed - just return the response
             return ChatResponse(
@@ -94,20 +112,20 @@ def process_db_message(message: str, session_id: Optional[str], context: str) ->
                 session_id=session_id,
                 user_question=message
             )
-                
+
     except Exception as e:
         logger.error(f"Error processing chat message: {str(e)}")
         return ChatResponse(
-            response=f"<p><b>Error:</b> There was a problem processing your request. Please try again.</p>",
+            response=f"<p><b>Error:</b> The Model is currently at its capacity limit. Please try again.</p>",
             session_id=session_id,
             user_question=message
         )
 
 def _execute_direct_sql(sql_query: str, session_id: str, chat, user_question: str) -> ChatResponse:
-    """Execute direct SQL query - FIXED: Added user_question parameter"""
+    """Execute direct SQL query"""
     logger.info(f"Direct SQL query detected: {sql_query[:50]}...")
     query_result, error = execute_sql_query(sql_query)
-    
+
     if error:
         return ChatResponse(
             response=f"<p><b>SQL Error:</b> {error}</p>",
@@ -115,19 +133,19 @@ def _execute_direct_sql(sql_query: str, session_id: str, chat, user_question: st
             has_sql=True,
             sql_query=sql_query,
             sql_error=error,
-            user_question=user_question  # ← FIXED: Now properly defined
+            user_question=user_question
         )
     else:
         # Use text result for AI interpretation
         text_result = query_result["text"]
         table_data = query_result["table"]
-        
+
         # Simple interpretation request
         interpretation_response = chat.send_message(
             f"Analyze these SQL results and provide a concise summary:\n\n{text_result}\n\n"
             "Use HTML formatting with <b> tags for key points."
         )
-        
+
         return ChatResponse(
             response=interpretation_response.text,
             session_id=session_id,
@@ -135,40 +153,40 @@ def _execute_direct_sql(sql_query: str, session_id: str, chat, user_question: st
             sql_query=sql_query,
             sql_result=text_result,  # Keep for backward compatibility
             sql_table=table_data,    # NEW: Structured table data
-            user_question=user_question,  # ← FIXED: Now properly defined
+            user_question=user_question,
             interpretation=interpretation_response.text
         )
 
 def _execute_generated_sql(sql_query: str, session_id: str, chat, user_question: str) -> ChatResponse:
-    """Execute SQL query generated by Gemini - FIXED: Added user_question parameter"""
+    """Execute SQL query generated by Gemini"""
     logger.info(f"AI generated SQL query: {sql_query[:50]}...")
     query_result, error = execute_sql_query(sql_query)
-    
+
     if error:
         # Ask for alternative approach
         error_response = chat.send_message(
             f"The SQL query failed with: {error}\n\nSuggest an alternative approach."
         )
-        
+
         return ChatResponse(
             response=error_response.text,
             session_id=session_id,
             has_sql=True,
             sql_query=sql_query,
             sql_error=error,
-            user_question=user_question  # ← FIXED: Now properly defined
+            user_question=user_question
         )
     else:
         # Use text result for AI interpretation
         text_result = query_result["text"]
         table_data = query_result["table"]
-        
+
         # Ask for analysis of results
         interpretation_response = chat.send_message(
             f"The SQL query returned:\n\n{text_result}\n\n"
             "Analyze these results and provide insights. Use HTML formatting."
         )
-        
+
         return ChatResponse(
             response=interpretation_response.text,
             session_id=session_id,
@@ -176,7 +194,7 @@ def _execute_generated_sql(sql_query: str, session_id: str, chat, user_question:
             sql_query=sql_query,
             sql_result=text_result,  # Keep for backward compatibility
             sql_table=table_data,    # NEW: Structured table data
-            user_question=user_question,  # ← FIXED: Now properly defined
+            user_question=user_question,
             interpretation=interpretation_response.text
         )
 
@@ -211,7 +229,7 @@ def get_session_count() -> Dict[str, int]:
 def process_file_message(message: str, session_id: Optional[str]) -> ChatResponse:
     """Process a chat message for file analysis - UNCHANGED"""
     session_id, chat = get_or_create_file_session(session_id)
-    
+
     try:
         response = chat.send_message(message)
         return ChatResponse(
@@ -221,22 +239,22 @@ def process_file_message(message: str, session_id: Optional[str]) -> ChatRespons
     except Exception as e:
         logger.error(f"Error processing file analysis message: {str(e)}")
         return ChatResponse(
-            response=f"<p><b>Error:</b> There was a problem processing your request. Please try again.</p>",
+            response=f"<p><b>Error:</b> The Model is currently at its capacity limit. Please try again.</p>",
             session_id=session_id
         )
 
 def process_file_upload(file_info: str, session_id: Optional[str]) -> ChatResponse:
     """Process uploaded file information - UNCHANGED"""
     session_id, chat = get_or_create_file_session(session_id)
-    
+
     try:
         file_message = (
             f"The user has uploaded a file:\n\n{file_info}\n\n"
             f"Analyze this data and provide insights about patterns and statistics."
         )
-        
+
         response = chat.send_message(file_message)
-        
+
         return ChatResponse(
             response=response.text,
             session_id=session_id
